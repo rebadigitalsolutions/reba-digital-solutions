@@ -4,7 +4,7 @@ import Footer from "@/components/Footer";
 import HeroSection from "@/components/Hero";
 import ServicesSection from "@/components/Services";
 import Portfolio from "@/components/Portfolio";
-import AutomationShowcase from "@/components/AutomationShowcase";
+// import AutomationShowcase from "@/components/AutomationShowcase";
 import Industries from "@/components/Industries";
 import Pricing from "@/components/Pricing";
 // import About from "@/components/About";
@@ -17,9 +17,9 @@ export default function Home() {
       <Navbar />
       <HeroSection />
       <ServicesSection />
-      <Portfolio />
-      <AutomationShowcase />
       <Industries />
+      <Portfolio />
+      {/* <AutomationShowcase /> */}
       <Pricing />
       {/* <About /> */}
       <Contact />

@@ -20,13 +20,7 @@ const projects = [
   {
     name: "Pritam - personal portfolio",
     url: "https://www.impritam.com/",
-    description: "Personal website portfolio ",
-  },
-  {
-    name: "Arjun Digital Solutions",
-    url: "https://arjun-digital-solutions.vercel.app/",
-    description:
-      "Digital agency website built with a modern responsive design.",
+    description: "Personal website portfolio",
   },
 ];
 
@@ -85,7 +79,7 @@ export default function Portfolio() {
                 <a
                   href={project.url}
                   target="_blank"
-                  className="inline-block text-sm font-medium text-purple-400 hover:text-purple-300 transition"
+                  className="inline-block text-sm font-medium text-zinc-300 hover:text-white transition"
                 >
                   Visit Website →
                 </a>
@@ -94,6 +88,19 @@ export default function Portfolio() {
           </FadeIn>
         ))}
       </div>
+
+      {/* Demo Button */}
+      <FadeIn>
+        <div className="mt-16 flex justify-center">
+          <a
+            href="https://demo.rebadigitalsolutions.com"
+            target="_blank"
+            className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:opacity-90 transition"
+          >
+            View More Works
+          </a>
+        </div>
+      </FadeIn>
     </section>
   );
 }

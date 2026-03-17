@@ -24,6 +24,7 @@ export default function Contact() {
           <div className="space-y-6">
             <div>
               <h4 className="font-semibold mb-2">Address</h4>
+
               <p className="text-zinc-400">
                 City of Joy Apartments
                 <br />
@@ -34,7 +35,7 @@ export default function Contact() {
             </div>
 
             <div>
-              <h4 className="font-semibold mb-2">Phone</h4>
+              <h4 className="font-semibold mb-2">WhatsApp Business</h4>
 
               <a
                 href="https://wa.me/918282859551"
@@ -44,31 +45,9 @@ export default function Contact() {
                 +91 82828 59551
               </a>
 
-              <a
-                href="https://wa.me/916291616198"
-                target="_blank"
-                className="block text-zinc-400 hover:text-white"
-              >
-                +91 62916 16198
-              </a>
-            </div>
-
-            <div>
-              <h4 className="font-semibold mb-2">Email</h4>
-
-              <a
-                href="mailto:rebadigitalsolutions@gmail.com"
-                className="block text-zinc-400 hover:text-white"
-              >
-                rebadigitalsolutions@gmail.com
-              </a>
-
-              <a
-                href="mailto:pritam.aber@gmail.com"
-                className="block text-zinc-400 hover:text-white"
-              >
-                pritam.aber@gmail.com
-              </a>
+              <p className="text-xs text-zinc-500 mt-2">
+                Message us directly on WhatsApp for faster response.
+              </p>
             </div>
           </div>
         </FadeIn>
@@ -83,8 +62,8 @@ export default function Contact() {
             />
 
             <input
-              type="email"
-              placeholder="Email"
+              type="text"
+              placeholder="Phone / WhatsApp Number"
               className="w-full px-4 py-3 bg-zinc-900 border border-zinc-800 rounded-lg focus:outline-none focus:border-zinc-600"
             />
 
