@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden py-32">
-      {/* Full width animated gradient */}
+    <section className="relative overflow-hidden py-32 hero-grid">
+      {/* Animated glow */}
       <motion.div
         animate={{ scale: [1, 1.15, 1] }}
         transition={{
@@ -31,7 +31,7 @@ export default function Hero() {
         <div className="w-[900px] h-[500px] bg-blue-600/20 blur-[160px] rounded-full" />
       </motion.div>
 
-      {/* Content container */}
+      {/* Content */}
       <div className="relative max-w-6xl mx-auto px-6">
         <FadeIn>
           <div className="max-w-3xl">
