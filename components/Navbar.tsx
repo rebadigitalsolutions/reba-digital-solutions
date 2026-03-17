@@ -9,22 +9,23 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <header className="w-full border-b border-zinc-800 bg-black/70 backdrop-blur sticky top-0 z-50">
+    <header className="w-full border-b border-zinc-800 bg-black/70 backdrop-blur fixed top-0 left-0 z-50">
       <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-3">
           <div className="relative w-10 h-10 rounded-full overflow-hidden border border-zinc-700">
             <Image
               src="/Reba Digital Solution Logo Cropped.png"
-              alt="Reba Digital Solutions"
+              alt="rebadigital solutions"
               fill
               className="object-cover"
               priority
             />
           </div>
 
-          <span className="text-lg font-semibold tracking-wide">
-            Reba Digital Solutions
+          {/* Fixed text to match logo */}
+          <span className="text-lg font-semibold tracking-wide lowercase">
+            rebadigitalsolutions
           </span>
         </Link>
 
@@ -75,7 +76,8 @@ export default function Navbar() {
             transition={{ duration: 0.25 }}
             className="md:hidden border-t border-zinc-800 bg-black"
           >
-            <nav className="flex flex-col px-6 py-6 gap-5 text-zinc-400">
+            {/* Increased size */}
+            <nav className="flex flex-col px-6 py-6 gap-6 text-lg text-zinc-300">
               <Link
                 href="#services"
                 onClick={() => setMenuOpen(false)}
