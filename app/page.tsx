@@ -1,65 +1,119 @@
-import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex min-h-screen w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
+    <div className="min-h-screen bg-black text-white font-sans">
+      {/* NAVBAR */}
+      <header className="w-full border-b border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-lg font-semibold tracking-wide">
+            Reba Digital Solutions
           </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+
+          <nav className="hidden md:flex gap-6 text-sm text-zinc-400">
+            <Link href="#services">Services</Link>
+            <Link href="#about">About</Link>
+            <Link href="#contact">Contact</Link>
+          </nav>
+        </div>
+      </header>
+
+      {/* HERO SECTION */}
+      <section className="max-w-6xl mx-auto px-6 py-28">
+        <div className="max-w-3xl">
+          <h2 className="text-4xl md:text-5xl font-bold leading-tight">
+            Automate Your Business.
+            <br />
+            Build Your Digital Presence.
+          </h2>
+
+          <p className="mt-6 text-zinc-400 text-lg">
+            We help businesses automate operations, build powerful web
+            applications, and unlock insights through data analytics.
           </p>
+
+          <div className="mt-8 flex gap-4">
+            <a
+              href="#contact"
+              className="px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-zinc-200 transition"
+            >
+              Get Started
+            </a>
+
+            <a
+              href="#services"
+              className="px-6 py-3 border border-zinc-700 rounded-lg hover:bg-zinc-900 transition"
+            >
+              View Services
+            </a>
+          </div>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
+      </section>
+
+      {/* SERVICES */}
+      <section
+        id="services"
+        className="max-w-6xl mx-auto px-6 py-24 border-t border-zinc-800"
+      >
+        <h3 className="text-2xl font-semibold mb-12">Services</h3>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          <div className="p-6 border border-zinc-800 rounded-xl bg-zinc-950">
+            <h4 className="text-lg font-semibold mb-2">Business Automation</h4>
+            <p className="text-zinc-400 text-sm">
+              Automate customer interactions and workflows using WhatsApp, AI
+              assistants, and smart integrations.
+            </p>
+          </div>
+
+          <div className="p-6 border border-zinc-800 rounded-xl bg-zinc-950">
+            <h4 className="text-lg font-semibold mb-2">Web Development</h4>
+            <p className="text-zinc-400 text-sm">
+              High-performance modern websites and web applications built with
+              the latest technologies.
+            </p>
+          </div>
+
+          <div className="p-6 border border-zinc-800 rounded-xl bg-zinc-950">
+            <h4 className="text-lg font-semibold mb-2">Data Analytics</h4>
+            <p className="text-zinc-400 text-sm">
+              Transform raw data into insights with dashboards, reports, and
+              advanced analytics solutions.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* CONTACT CTA */}
+      <section
+        id="contact"
+        className="max-w-6xl mx-auto px-6 py-24 border-t border-zinc-800"
+      >
+        <div className="max-w-2xl">
+          <h3 className="text-3xl font-semibold">
+            Let’s build something great.
+          </h3>
+
+          <p className="mt-4 text-zinc-400">
+            If you're looking to automate your business, build a modern website,
+            or leverage your data, let's talk.
+          </p>
+
           <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="mailto:contact@rebadigital.com"
+            className="inline-block mt-8 px-6 py-3 bg-white text-black rounded-lg font-medium hover:bg-zinc-200 transition"
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+            Contact Us
           </a>
         </div>
-      </main>
+      </section>
+
+      {/* FOOTER */}
+      <footer className="border-t border-zinc-800">
+        <div className="max-w-6xl mx-auto px-6 py-6 text-sm text-zinc-500">
+          © {new Date().getFullYear()} Reba Digital Solutions
+        </div>
+      </footer>
     </div>
   );
 }
