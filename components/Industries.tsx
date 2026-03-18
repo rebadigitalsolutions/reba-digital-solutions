@@ -12,34 +12,44 @@ import {
 
 const industries = [
   {
-    name: "Dental Clinics",
+    name: "Real Estate",
+    icon: Building2,
+    desc: "Automated property inquiries, lead qualification, and WhatsApp follow-ups for buyers.",
+  },
+  {
+    name: "Clinics",
     icon: Stethoscope,
-    desc: "Automated appointment booking, reminders, and WhatsApp patient support.",
-  },
-  {
-    name: "Salons",
-    icon: Scissors,
-    desc: "Online booking systems and automated customer engagement workflows.",
-  },
-  {
-    name: "Schools",
-    icon: GraduationCap,
-    desc: "Admission inquiries, automated notifications, and parent communication systems.",
+    desc: "Automated appointment booking, patient reminders, and WhatsApp support.",
   },
   {
     name: "Hospitals",
     icon: Building2,
-    desc: "Smart patient scheduling, WhatsApp notifications, and workflow automation.",
+    desc: "Smart patient scheduling, department routing, and automated notifications.",
+  },
+  {
+    name: "Salons & Spas",
+    icon: Scissors,
+    desc: "Online appointment booking, reminders, and automated customer engagement.",
   },
   {
     name: "Restaurants",
     icon: Utensils,
-    desc: "Online menu, table reservations, and automated customer communication.",
+    desc: "Table reservations, order inquiries, and automated customer communication.",
+  },
+  {
+    name: "Hotels & Guesthouses",
+    icon: Building2,
+    desc: "Room booking inquiries, guest support, and automated WhatsApp confirmations.",
+  },
+  {
+    name: "Education Institutes",
+    icon: GraduationCap,
+    desc: "Admission inquiries, course information, and automated parent communication.",
   },
   {
     name: "Local Businesses",
     icon: Store,
-    desc: "Business websites, lead automation, and customer engagement systems.",
+    desc: "Lead generation, website automation, and customer support systems.",
   },
 ];
 
