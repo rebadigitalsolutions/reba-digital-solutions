@@ -10,7 +10,9 @@ export default function Pricing() {
     >
       <FadeIn>
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold">Pricing</h2>
+          <h2 className="text-3xl font-semibold">
+            <strong className="text-green-400">Pricing</strong>
+          </h2>
           <p className="text-zinc-400 mt-3">
             Transparent pricing for websites, automation, and analytics
           </p>
@@ -140,13 +142,36 @@ export default function Pricing() {
 
       {/* Custom Solutions */}
       <FadeIn>
-        <div className="mt-16 text-center text-zinc-400 text-sm">
-          Need something different?
-          <span className="text-white">
-            {" "}
-            Custom automation, software, and integrations{" "}
-          </span>
-          are available based on your business requirements.
+        <div className="mt-16 flex flex-col items-center text-center">
+          <p className="text-zinc-400 text-sm max-w-2xl leading-relaxed">
+            Need something beyond these plans?
+            <span className="text-indigo-400"> Custom automation</span>,
+            <span className="text-indigo-400"> software development</span>, and
+            <span className="text-indigo-400"> business integrations</span> can
+            be tailored specifically for your business needs.
+          </p>
+
+          <p className="text-zinc-500 text-sm mt-3">
+            Contact us to discuss your requirements and get a custom pricing
+            estimate.
+          </p>
+
+          {/* CTA Buttons */}
+          <div className="flex flex-wrap gap-4 mt-6 justify-center">
+            <a
+              href="#contact"
+              className="px-6 py-3 rounded-lg bg-white text-black font-medium hover:bg-zinc-200 transition"
+            >
+              Request Custom Quote
+            </a>
+
+            <a
+              href="tel:+918282859551"
+              className="px-6 py-3 rounded-lg border border-zinc-700 text-white hover:bg-zinc-900 transition"
+            >
+              Call for Pricing
+            </a>
+          </div>
         </div>
       </FadeIn>
     </section>

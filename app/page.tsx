@@ -4,8 +4,9 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import HeroSection from "@/components/Hero";
 import ServicesSection from "@/components/Services";
+import ClientFlowSection from "@/components/ClientFlowSection";
 import Portfolio from "@/components/Portfolio";
-import Industries from "@/components/Industries";
+// import Industries from "@/components/Industries";
 import Pricing from "@/components/Pricing";
 import Contact from "@/components/Contact";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -48,7 +49,8 @@ export default function Home() {
         <Navbar />
         <HeroSection />
         <ServicesSection />
-        <Industries />
+        <ClientFlowSection />
+        {/* <Industries /> */}
         <Portfolio />
         <Pricing />
         <Contact />

@@ -9,18 +9,19 @@ const projects = [
     name: "Cherry n Bean",
     url: "https://www.cherrynbean.com/",
     description:
-      "Modern café website with elegant UI and fully responsive layout.",
+      "Homestay blending traditional and modern architecture nestled amidst lush coffee plantations.",
   },
   {
     name: "Sansthita",
     url: "https://www.sansthita.org/",
     description:
-      "Non-profit organization website designed for clarity and accessibility.",
+      "Non-profit organization website designed with clarity, accessibility, and user-friendly navigation.",
   },
   {
-    name: "Pritam - personal portfolio",
+    name: "Pritam - Personal Portfolio",
     url: "https://www.impritam.com/",
-    description: "Personal website portfolio",
+    description:
+      "Personal portfolio website showcasing projects, technical blogs, and developer experience.",
   },
 ];
 
@@ -32,7 +33,9 @@ export default function Portfolio() {
     >
       <FadeIn>
         <div className="text-center mb-16">
-          <h2 className="text-3xl font-semibold">Our Works</h2>
+          <h2 className="text-3xl font-semibold">
+            Our <span className="text-indigo-400">Work</span>
+          </h2>
           <p className="text-zinc-400 mt-3">
             Websites we’ve designed and developed
           </p>
@@ -45,9 +48,9 @@ export default function Portfolio() {
             <motion.div
               whileHover={{ y: -6, rotateX: 2, rotateY: -2 }}
               transition={{ type: "spring", stiffness: 200 }}
-              className="group border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 hover:border-zinc-600 transition"
+              className="group h-[380px] border border-zinc-800 rounded-xl overflow-hidden bg-zinc-950 hover:border-zinc-600 transition flex flex-col"
             >
-              {/* Browser Top Bar */}
+              {/* Browser Bar */}
               <div className="flex items-center gap-2 px-4 py-3 bg-zinc-900 border-b border-zinc-800">
                 <div className="w-3 h-3 bg-red-500 rounded-full"></div>
                 <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
@@ -69,10 +72,10 @@ export default function Portfolio() {
               </div>
 
               {/* Content */}
-              <div className="p-6 flex flex-col h-full">
+              <div className="p-6 flex flex-col flex-1">
                 <h3 className="text-lg font-semibold mb-2">{project.name}</h3>
 
-                <p className="text-zinc-400 text-sm mb-6 flex-grow">
+                <p className="text-zinc-400 text-sm mb-6 flex-grow line-clamp-3">
                   {project.description}
                 </p>
 
@@ -89,9 +92,9 @@ export default function Portfolio() {
         ))}
       </div>
 
-      {/* Demo Button */}
+      {/* CTA */}
       <FadeIn>
-        <div className="mt-16 flex justify-center">
+        <div className="mt-16 flex flex-col items-center">
           <a
             href="https://demo.rebadigitalsolutions.com"
             target="_blank"
@@ -99,6 +102,11 @@ export default function Portfolio() {
           >
             View More Works
           </a>
+
+          <p className="text-zinc-400 text-sm text-center mt-6 max-w-xl">
+            We are currently working on several new projects. More case studies
+            and client work will be added here soon.
+          </p>
         </div>
       </FadeIn>
     </section>

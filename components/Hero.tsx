@@ -31,18 +31,20 @@ export default function Hero() {
             </div>
 
             <h1 className="text-4xl md:text-5xl font-bold leading-tight">
-              Turn Your Website & WhatsApp
-              <br />
-              Into a Lead Generation Machine
+              We Help Businesses Get More{" "}
+              <span className="text-indigo-400 font-semibold">Clients</span>{" "}
+              Consistently
             </h1>
 
             <p className="mt-6 text-zinc-400 text-lg">
-              Reba Digital Solutions helps businesses automate customer
-              inquiries, capture leads automatically, and convert them into real
-              clients using WhatsApp automation, smart workflows, and modern
-              websites. We help businesses collect, organize, and deliver
-              qualified leads directly to you — so you never miss a potential
-              customer.
+              <span className="text-indigo-400 font-semibold">
+                Reba Digital Solutions
+              </span>{" "}
+              helps businesses automate customer inquiries, capture leads
+              automatically, and convert them into real clients using WhatsApp
+              automation, smart workflows, and modern websites. We help
+              businesses collect, organize, and deliver qualified leads directly
+              to you — so you never miss a potential customer.
             </p>
 
             <div className="mt-10 flex flex-wrap gap-4">
