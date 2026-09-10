@@ -207,7 +207,7 @@ export default function ContactForm({
       <noscript>
         <p>
           Please enable JavaScript to use this form, or email
-          pritam.das@rebadigitalsolutions.com.
+          hello@rebadigitalsolutions.com.
         </p>
       </noscript>
     </form>

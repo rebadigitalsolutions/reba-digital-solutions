@@ -39,7 +39,7 @@ No working integration was present. The existing Resend dependency is now used t
 
 - RESEND_API_KEY: your Resend API key.
 - CONTACT_FROM_EMAIL: Reba Digital Solutions <website@rebadigitalsolutions.com>, using the verified rebadigitalsolutions.com domain.
-- CONTACT_TO_EMAIL: optional recipient override; defaults to the owner-selected inbox pritam.das@rebadigitalsolutions.com.
+- CONTACT_TO_EMAIL: optional recipient override; defaults to the owner-selected inbox hello@rebadigitalsolutions.com.
 
 The supplied Resend screenshot shows the rebadigitalsolutions.com domain as verified, and .env.local is configured to send from that domain to the owner-selected inbox. The form explains when online enquiries are unavailable and offers direct email/WhatsApp contact. Attempts never report success without provider acceptance. A provider error, network error, missing configuration or validation error preserves entered values. Successful provider acceptance does not prove delivery to the recipient inbox unless a live submission is accepted by Resend and appears in the mailbox.
 
@@ -75,4 +75,4 @@ The existing application uses a Node.js Next.js server for enquiry delivery. No 
 
 ## Latest owner updates
 
-Added pritam.das@rebadigitalsolutions.com as the single public contact email. The requested 8282859551 number was already present; it remains consistently formatted as +91 82828 59551 rather than duplicated. Added Instagram & social media automation as a dedicated service. The contact form recipient is pritam.das@rebadigitalsolutions.com. The verified sender is configured as Reba Digital Solutions <website@rebadigitalsolutions.com>. .env.local is ignored by Git; .env.example documents the required settings without secrets. Added Canvasbrick and Spacevyu to Client Work based on owner-supplied project details. Added the supplied dental clinic demo as a published fictional concept website under Website Demos. The homepage demo showcase has been removed; demos remain available from the Demos navigation item and /demos page.
+Added hello@rebadigitalsolutions.com as the single public contact email. The requested 8282859551 number was already present; it remains consistently formatted as +91 82828 59551 rather than duplicated. Added Instagram & social media automation as a dedicated service. The contact form recipient is hello@rebadigitalsolutions.com. The verified sender is configured as Reba Digital Solutions <website@rebadigitalsolutions.com>. .env.local is ignored by Git; .env.example documents the required settings without secrets. Added Canvasbrick and Spacevyu to Client Work based on owner-supplied project details. Added the supplied dental clinic demo as a published fictional concept website under Website Demos. The homepage demo showcase has been removed; demos remain available from the Demos navigation item and /demos page.

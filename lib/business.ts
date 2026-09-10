@@ -4,6 +4,6 @@ export const business = {
   phone: "+918282859551",
   displayPhone: "+91 82828 59551",
   whatsapp: "https://wa.me/918282859551",
-  emails: ["pritam.das@rebadigitalsolutions.com"],
-  enquiryInbox: "pritam.das@rebadigitalsolutions.com",
+  emails: ["hello@rebadigitalsolutions.com"],
+  enquiryInbox: "hello@rebadigitalsolutions.com",
 };

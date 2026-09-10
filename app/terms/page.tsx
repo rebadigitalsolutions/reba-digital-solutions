@@ -43,8 +43,8 @@ export default function Terms() {
         <h2>Questions</h2>
         <p>
           For clarification, contact{" "}
-          <a href="mailto:pritam.das@rebadigitalsolutions.com">
-            pritam.das@rebadigitalsolutions.com
+          <a href="mailto:hello@rebadigitalsolutions.com">
+            hello@rebadigitalsolutions.com
           </a>{" "}
           before proceeding with a project.
         </p>

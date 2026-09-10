@@ -11,7 +11,7 @@ npm run dev
 
 ## Contact delivery
 
-Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` plus `CONTACT_FROM_EMAIL` using a sender on a Resend-verified domain. `CONTACT_TO_EMAIL` is set to the owner-selected inbox `pritam.das@rebadigitalsolutions.com`. The recipient and verified sender may be different addresses. Never commit the real key.
+Copy `.env.example` to `.env.local` and set `RESEND_API_KEY` plus `CONTACT_FROM_EMAIL` using a sender on a Resend-verified domain. `CONTACT_TO_EMAIL` is set to the owner-selected inbox `hello@rebadigitalsolutions.com`. The recipient and verified sender may be different addresses. Never commit the real key.
 
 Without complete configuration, the form explicitly reports that it cannot send. Direct email, phone and WhatsApp links remain available.
 
