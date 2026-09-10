@@ -37,7 +37,7 @@ export default function ClientFlowSection() {
               <ul className="space-y-5 text-zinc-400 text-sm leading-relaxed">
                 <li>
                   <strong className="text-orange-400">
-                    Customers can't find your business online
+                    Customers can’t find your business online
                   </strong>{" "}
                   – When your website or listings are not visible in search
                   results, potential customers may choose competitors instead.

@@ -1,110 +1,90 @@
 "use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-
+import { usePathname } from "next/navigation";
+import { useRef, useState } from "react";
+import { ArrowUpRight, Menu, X } from "lucide-react";
+const links = [
+  ["Services", "/services"],
+  ["Industries", "/industries"],
+  ["Our Work", "/work"],
+  ["Demos", "/demos"],
+  ["About", "/about"],
+  ["Contact", "/contact"],
+];
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
+  const [open, setOpen] = useState(false);
+  const path = usePathname();
+  const trigger = useRef<HTMLButtonElement>(null);
   return (
-    <header className="w-full border-b border-zinc-800 bg-black/70 backdrop-blur fixed top-0 left-0 z-50">
-      <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-        {/* Logo */}
-        <Link href="/" className="flex items-center gap-3">
-          <div className="relative w-10 h-10 rounded-full overflow-hidden border border-zinc-700">
-            <Image
-              src="/Reba Digital Solution Logo Cropped.png"
-              alt="rebadigital solutions"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
-
-          {/* Fixed text to match logo */}
-          <span className="text-lg font-semibold tracking-wide lowercase">
-            rebadigitalsolutions
+    <header
+      className="site-header"
+      onKeyDown={(e) => {
+        if (e.key === "Escape") {
+          setOpen(false);
+          trigger.current?.focus();
+        }
+      }}
+    >
+      <div className="container nav-inner">
+        <Link
+          href="/"
+          className="brand"
+          aria-label="Reba Digital Solutions home"
+          onClick={() => setOpen(false)}
+        >
+          <span className="brand-mark">
+            r<span>↗</span>
+          </span>
+          <span className="brand-name">
+            reba<span>DIGITAL SOLUTIONS</span>
           </span>
         </Link>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden md:flex gap-8 text-sm text-zinc-400">
-          <Link href="#services" className="hover:text-white transition">
-            Services
-          </Link>
-
-          <Link href="#about" className="hover:text-white transition">
-            About
-          </Link>
-
-          <Link href="#contact" className="hover:text-white transition">
-            Contact
-          </Link>
+        <nav aria-label="Main navigation" className="desktop-nav">
+          {links.map(([name, url]) => (
+            <Link
+              key={url}
+              href={url}
+              aria-current={path.startsWith(url) ? "page" : undefined}
+            >
+              {name}
+            </Link>
+          ))}
         </nav>
-
-        {/* Hamburger */}
+        <Link className="button nav-cta" href="/contact">
+          Discuss Your Project <ArrowUpRight size={16} />
+        </Link>
         <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden relative w-6 h-6 flex flex-col justify-center items-center"
+          ref={trigger}
+          className="menu-toggle"
+          aria-label={open ? "Close menu" : "Open menu"}
+          aria-expanded={open}
+          aria-controls="mobile-navigation"
+          onClick={() => setOpen(!open)}
         >
-          <motion.span
-            animate={menuOpen ? { rotate: 45, y: 6 } : { rotate: 0, y: 0 }}
-            className="w-6 h-[2px] bg-white block"
-          />
-
-          <motion.span
-            animate={menuOpen ? { opacity: 0 } : { opacity: 1 }}
-            className="w-6 h-[2px] bg-white block my-1"
-          />
-
-          <motion.span
-            animate={menuOpen ? { rotate: -45, y: -6 } : { rotate: 0, y: 0 }}
-            className="w-6 h-[2px] bg-white block"
-          />
+          {open ? <X /> : <Menu />}
         </button>
       </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.25 }}
-            className="md:hidden border-t border-zinc-800 bg-black"
+      <nav
+        id="mobile-navigation"
+        aria-label="Mobile navigation"
+        className="mobile-nav"
+        hidden={!open}
+      >
+        {links.map(([name, url]) => (
+          <Link
+            key={url}
+            href={url}
+            aria-current={path.startsWith(url) ? "page" : undefined}
+            onClick={() => setOpen(false)}
           >
-            {/* Increased size */}
-            <nav className="flex flex-col px-6 py-6 gap-6 text-lg text-zinc-300">
-              <Link
-                href="#services"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-white transition"
-              >
-                Services
-              </Link>
-
-              <Link
-                href="#about"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-white transition"
-              >
-                About
-              </Link>
-
-              <Link
-                href="#contact"
-                onClick={() => setMenuOpen(false)}
-                className="hover:text-white transition"
-              >
-                Contact
-              </Link>
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            {name}
+            <ArrowUpRight size={17} />
+          </Link>
+        ))}
+        <Link href="/contact" className="button" onClick={() => setOpen(false)}>
+          Discuss Your Project <ArrowUpRight size={18} />
+        </Link>
+      </nav>
     </header>
   );
 }

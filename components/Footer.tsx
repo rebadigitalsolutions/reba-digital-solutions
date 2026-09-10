@@ -1,136 +1,84 @@
-"use client";
-
 import Link from "next/link";
-import Image from "next/image";
-import {
-  Facebook,
-  Instagram,
-  Linkedin,
-  Youtube,
-  Mail,
-  Phone,
-} from "lucide-react";
-
+import { ArrowUpRight } from "lucide-react";
+import { business } from "@/lib/business";
 export default function Footer() {
   return (
-    <footer className="bg-black border-t border-zinc-800 mt-24">
-      <div className="max-w-6xl mx-auto px-6 py-16 grid md:grid-cols-3 gap-16">
-        {/* LEFT - BRAND */}
+    <footer className="site-footer">
+      <div className="container footer-grid">
         <div>
-          <div className="flex items-center gap-3 mb-6">
-            <div className="w-12 h-12 relative rounded-md overflow-hidden border border-zinc-700">
-              <Image
-                src="/Reba Digital Solution Logo Cropped.png"
-                alt="Reba Digital Solutions"
-                fill
-                className="object-cover"
-              />
-            </div>
-
-            <span className="text-lg font-semibold">
-              Reba Digital Solutions
+          <Link href="/" className="brand">
+            <span className="brand-mark">
+              r<span>↗</span>
             </span>
-          </div>
-
-          <p className="text-sm text-zinc-400 leading-relaxed mb-6">
-            Reba Digital Solutions helps businesses grow by combining
-            automation, modern websites, and data-driven insights to improve
-            visibility, capture leads, and convert them into real customers.
+            <span className="brand-name">
+              reba<span>DIGITAL SOLUTIONS</span>
+            </span>
+          </Link>
+          <p>
+            Digital foundations.
+            <br />
+            Real business possibilities.
           </p>
-
-          {/* Contact */}
-          <div className="space-y-2 text-sm text-zinc-400 mb-6">
-            <a
-              href="tel:+918282859551"
-              className="flex items-center gap-2 hover:text-white transition"
-            >
-              <Phone size={14} /> +91 82828 59551
+          <p className="small">
+            Kolkata, India.
+            <br />
+            Working with businesses near and far.
+          </p>
+        </div>
+        <div>
+          <h2>What we do</h2>
+          <Link href="/services#build">Build your presence</Link>
+          <Link href="/services#grow">Grow your visibility</Link>
+          <Link href="/services#automate">Automate your operations</Link>
+          <Link href="/industries">Industries we serve</Link>
+        </div>
+        <div>
+          <h2>Explore</h2>
+          <Link href="/work">Client Work</Link>
+          <Link href="/demos">Website Demos</Link>
+          <Link href="/about">About Reba</Link>
+          <Link href="/contact">Contact</Link>
+        </div>
+        <div>
+          <h2>Let’s connect</h2>
+          {business.emails.map((email) => (
+            <a key={email} href={`mailto:${email}`} className="footer-email">
+              {email}
             </a>
-
-            <a
-              href="mailto:rebadigitalsolutions@gmail.com"
-              className="flex items-center gap-2 hover:text-white transition"
-            >
-              <Mail size={14} /> rebadigitalsolutions@gmail.com
-            </a>
-          </div>
-
-          {/* Social Icons */}
-          <div className="flex gap-4">
-            <a
-              href="https://www.facebook.com/profile.php?id=61579534472049"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-zinc-700 transition"
-            >
-              <Facebook size={16} />
-            </a>
-
+          ))}
+          <a href="tel:+918282859551">+91 82828 59551</a>
+          <a
+            href="https://wa.me/918282859551"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            WhatsApp <ArrowUpRight size={14} />
+          </a>
+          <div className="social-links">
             <a
               href="https://www.instagram.com/rebadigitalsolutions/"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-zinc-700 transition"
             >
-              <Instagram size={16} />
+              Instagram ↗
             </a>
-
             <a
-              href="https://wa.me/918282859551"
+              href="https://www.facebook.com/profile.php?id=61579534472049"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-zinc-800 hover:bg-zinc-700 transition"
             >
-              <Phone size={16} />
+              Facebook ↗
             </a>
           </div>
         </div>
-
-        {/* WHAT WE DO */}
-        <div>
-          <h4 className="font-semibold text-lg mb-4">What We Do</h4>
-
-          <div className="w-12 h-[2px] bg-white mb-6"></div>
-
-          <p className="text-sm text-zinc-400 leading-relaxed">
-            Website Development | Business Automation | WhatsApp Automation |
-            Lead Generation Systems | Data Analytics Dashboards | SEO | Digital
-            Marketing | Custom Business Software
-          </p>
-        </div>
-
-        {/* WHO WE SERVE */}
-        <div>
-          <h4 className="font-semibold text-lg mb-4">Who We Serve</h4>
-
-          <div className="w-12 h-[2px] bg-white mb-6"></div>
-
-          <p className="text-sm text-zinc-400 leading-relaxed">
-            Clinics | Hospitals | Schools | Coaching Institutes | Salons |
-            Restaurants | Local Businesses | Startups | Consultants | Agencies |
-            Service Businesses
-          </p>
-        </div>
       </div>
-
-      {/* BOTTOM BAR */}
-      <div className="border-t border-zinc-800">
-        <div className="max-w-6xl mx-auto px-6 py-6 flex flex-col md:flex-row justify-between items-center text-sm text-zinc-500">
-          <span>
-            © {new Date().getFullYear()} Reba Digital Solutions. All Rights
-            Reserved
-          </span>
-
-          <div className="flex gap-6 mt-3 md:mt-0">
-            <Link href="/privacy" className="hover:text-white">
-              Privacy Policy
-            </Link>
-
-            <Link href="/terms" className="hover:text-white">
-              Terms & Conditions
-            </Link>
-          </div>
+      <div className="container footer-bottom">
+        <span>© {new Date().getFullYear()} Reba Digital Solutions</span>
+        <div>
+          <Link href="/privacy">Privacy</Link>
+          <Link href="/terms">Terms of Use</Link>
         </div>
+        <span>Thoughtfully built. Ready for what’s next.</span>
       </div>
     </footer>
   );

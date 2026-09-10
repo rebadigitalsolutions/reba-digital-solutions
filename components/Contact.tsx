@@ -13,7 +13,7 @@ export default function Contact() {
           <h2 className="text-3xl font-semibold">Contact Us</h2>
 
           <p className="text-zinc-400 mt-3">
-            Let's discuss how automation can improve your business
+            Let’s discuss how automation can improve your business
           </p>
         </div>
       </FadeIn>
