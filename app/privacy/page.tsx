@@ -44,8 +44,8 @@ export default function Privacy() {
         <h2>Questions about your information</h2>
         <p>
           Contact{" "}
-          <a href="mailto:rebadigitalsolutions@gmail.com">
-            rebadigitalsolutions@gmail.com
+          <a href="mailto:pritam.das@rebadigitalsolutions.com">
+            pritam.das@rebadigitalsolutions.com
           </a>{" "}
           to ask about an enquiry or request correction or deletion of
           information you have sent. Hosting and email providers may maintain

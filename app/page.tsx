@@ -16,8 +16,6 @@ import {
   EnquiryBanner,
   IndustryLinks,
 } from "@/components/Sections";
-import { publishedDemos } from "@/lib/demos";
-import DemoDirectory from "@/components/DemoDirectory";
 export default function Home() {
   return (
     <>
@@ -175,17 +173,6 @@ export default function Home() {
           Explore All 15 Industries <ArrowRight size={18} />
         </Link>
       </section>
-      {publishedDemos.length > 0 && (
-        <section className="section container">
-          <p className="eyebrow">WEBSITE DEMOS</p>
-          <h2>Explore the possibilities.</h2>
-          <p>
-            Concept websites for fictional businesses, separate from our client
-            work.
-          </p>
-          <DemoDirectory entries={publishedDemos} compact />
-        </section>
-      )}
       <section className="section process-section">
         <div className="container">
           <p className="eyebrow">HOW WE WORK</p>

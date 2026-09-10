@@ -50,8 +50,8 @@ for (const route of urls) {
   }
   if (route === "/") {
     assert.match(html, /Explore Our Services/);
-    assert.match(html, /Dental Clinic Website Demo/);
-    assert.ok(html.includes('class="demo-grid"'));
+    assert.ok(!html.includes("Dental Clinic Website Demo"));
+    assert.ok(!html.includes('class="demo-grid"'));
     for (const id of [
       "services",
       "portfolio",

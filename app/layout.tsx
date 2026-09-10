@@ -52,7 +52,7 @@ export default function RootLayout({
               name: "Reba Digital Solutions",
               url: "https://rebadigitalsolutions.com",
               telephone: "+918282859551",
-              email: "rebadigitalsolutions@gmail.com",
+              email: "pritam.das@rebadigitalsolutions.com",
               address: {
                 "@type": "PostalAddress",
                 addressLocality: "Kolkata",
