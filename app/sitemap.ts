@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
 import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
+import { siteUrl } from "@/lib/site";
 export default function sitemap(): MetadataRoute.Sitemap {
-  const root = "https://rebadigitalsolutions.com";
+  const root = siteUrl;
   return [
     "",
     "/services",

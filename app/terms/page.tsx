@@ -1,10 +1,11 @@
 import { PageIntro } from "@/components/Sections";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Website Terms of Use",
   description:
     "Website information, project scope and third-party services for Reba Digital Solutions.",
-  alternates: { canonical: "/terms" },
-};
+  path: "/terms",
+});
 export default function Terms() {
   return (
     <>

@@ -840,9 +840,13 @@ svg {
 }
 .social-links {
   display: flex;
-  gap: 18px;
-  font-size: 0.73rem;
+  align-items: center;
+  gap: 16px;
   margin-top: 19px;
+}
+.social-links a {
+  display: inline-flex;
+  min-height: auto;
 }
 .footer-bottom {
   display: flex;

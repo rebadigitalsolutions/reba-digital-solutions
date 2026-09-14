@@ -1,10 +1,11 @@
 import { PageIntro } from "@/components/Sections";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Privacy Notice",
   description:
     "How this website handles project enquiries and links to external services.",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+});
 export default function Privacy() {
   return (
     <>

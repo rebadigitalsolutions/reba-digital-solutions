@@ -15,10 +15,35 @@ import {
   FAQ,
   EnquiryBanner,
   IndustryLinks,
+  faqs,
 } from "@/components/Sections";
+import { pageMetadata } from "@/lib/seo";
+import { defaultTitle, defaultDescription } from "@/lib/site";
+export const metadata = {
+  ...pageMetadata({
+    title: defaultTitle,
+    description: defaultDescription,
+    path: "/",
+  }),
+  title: { absolute: defaultTitle },
+};
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: faqs.map(([q, a]) => ({
+              "@type": "Question",
+              name: q,
+              acceptedAnswer: { "@type": "Answer", text: a },
+            })),
+          }),
+        }}
+      />
       <section className="hero container">
         <div className="hero-copy">
           <p className="eyebrow">

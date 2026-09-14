@@ -1,10 +1,11 @@
 import { PageIntro, Process, EnquiryBanner } from "@/components/Sections";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "About Reba",
   description:
     "A Kolkata-based digital services business helping companies in India and beyond with websites, marketing and practical business systems.",
-  alternates: { canonical: "/about" },
-};
+  path: "/about",
+});
 export default function AboutPage() {
   return (
     <>

@@ -1,10 +1,11 @@
 import { PageIntro, IndustryLinks, EnquiryBanner } from "@/components/Sections";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Industries",
   description:
     "Digital services for 15 business sectors, from property and healthcare to hospitality, retail and B2B suppliers.",
-  alternates: { canonical: "/industries" },
-};
+  path: "/industries",
+});
 export default function IndustriesPage() {
   return (
     <>

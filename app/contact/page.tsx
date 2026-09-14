@@ -3,12 +3,13 @@ import ContactForm from "@/components/ContactForm";
 import { services } from "@/lib/services";
 import { industries } from "@/lib/industries";
 import { business } from "@/lib/business";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Discuss Your Project",
   description:
     "Tell Reba Digital Solutions about your website, marketing, CRM or automation project. Contact our Kolkata-based business by form, email, phone or WhatsApp.",
-  alternates: { canonical: "/contact" },
-};
+  path: "/contact",
+});
 export default async function ContactPage({
   searchParams,
 }: {

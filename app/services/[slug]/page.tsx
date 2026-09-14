@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { services } from "@/lib/services";
 import { PageIntro, BackLink, FAQ } from "@/components/Sections";
+import { pageMetadata } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 export function generateStaticParams() {
   return services.map((s) => ({ slug: s.slug }));
 }
@@ -13,11 +15,12 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const s = services.find((s) => s.slug === slug);
-  return {
-    title: s?.title ?? "Service not found",
-    description: s?.summary,
-    alternates: { canonical: `/services/${slug}` },
-  };
+  if (!s) return { title: "Service not found" };
+  return pageMetadata({
+    title: s.title,
+    description: s.summary,
+    path: `/services/${slug}`,
+  });
 }
 export default async function ServicePage({
   params,
@@ -29,6 +32,30 @@ export default async function ServicePage({
   if (!s) notFound();
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Services",
+                item: `${siteUrl}/services`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: s.title,
+                item: `${siteUrl}/services/${s.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
       <div className="container">
         <BackLink href="/services">All services</BackLink>
       </div>

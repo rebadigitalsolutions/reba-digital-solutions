@@ -4,6 +4,8 @@ import { ArrowUpRight } from "lucide-react";
 import { industries } from "@/lib/industries";
 import { services } from "@/lib/services";
 import { PageIntro, BackLink } from "@/components/Sections";
+import { pageMetadata } from "@/lib/seo";
+import { siteUrl } from "@/lib/site";
 export function generateStaticParams() {
   return industries.map((i) => ({ slug: i.slug }));
 }
@@ -14,13 +16,12 @@ export async function generateMetadata({
 }) {
   const { slug } = await params;
   const i = industries.find((i) => i.slug === slug);
-  return {
-    title: i
-      ? `Digital services for ${i.title.toLowerCase()}`
-      : "Industry not found",
-    description: i?.need,
-    alternates: { canonical: `/industries/${slug}` },
-  };
+  if (!i) return { title: "Industry not found" };
+  return pageMetadata({
+    title: `Digital services for ${i.title.toLowerCase()}`,
+    description: i.need,
+    path: `/industries/${slug}`,
+  });
 }
 export default async function IndustryPage({
   params,
@@ -32,6 +33,30 @@ export default async function IndustryPage({
   if (!i) notFound();
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+              {
+                "@type": "ListItem",
+                position: 2,
+                name: "Industries",
+                item: `${siteUrl}/industries`,
+              },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: i.title,
+                item: `${siteUrl}/industries/${i.slug}`,
+              },
+            ],
+          }),
+        }}
+      />
       <div className="container">
         <BackLink href="/industries">All industries</BackLink>
       </div>

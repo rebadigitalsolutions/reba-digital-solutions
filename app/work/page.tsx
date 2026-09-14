@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageIntro, WorkCards, EnquiryBanner } from "@/components/Sections";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Client Work",
   description:
     "Explore Reba Digital Solutions’ existing client work, including websites, backend systems, mobile app work and admin panels.",
-  alternates: { canonical: "/work" },
-};
+  path: "/work",
+});
 export default function WorkPage() {
   return (
     <>

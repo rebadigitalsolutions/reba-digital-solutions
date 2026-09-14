@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { business } from "@/lib/business";
+import { enabledSocialLinks } from "@/lib/social";
+import { socialIconMap } from "@/components/SocialIcons";
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -54,22 +56,30 @@ export default function Footer() {
           >
             WhatsApp <ArrowUpRight size={14} />
           </a>
-          <div className="social-links">
-            <a
-              href="https://www.instagram.com/rebadigitalsolutions/"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Instagram ↗
-            </a>
-            <a
-              href="https://www.facebook.com/profile.php?id=61579534472049"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Facebook ↗
-            </a>
-          </div>
+          {enabledSocialLinks.some((link) => link.id !== "whatsapp") && (
+            <div className="social-links">
+              {enabledSocialLinks
+                .filter((link) => link.id !== "whatsapp")
+                .map((link) => {
+                  const Icon = socialIconMap[link.id];
+                  return (
+                    <a
+                      key={link.id}
+                      href={link.url}
+                      target="_blank"
+                      rel={
+                        link.id === "whatsapp"
+                          ? "noopener noreferrer"
+                          : "noopener noreferrer nofollow"
+                      }
+                      aria-label={`Reba Digital Solutions on ${link.label}`}
+                    >
+                      <Icon size={18} />
+                    </a>
+                  );
+                })}
+            </div>
+          )}
         </div>
       </div>
       <div className="container footer-bottom">

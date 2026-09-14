@@ -2,12 +2,13 @@ import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { PageIntro, EnquiryBanner } from "@/components/Sections";
 import { groups, services } from "@/lib/services";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Services",
   description:
     "Explore website development, marketing, CRM, reporting and automation services, organised around Build, Grow and Automate.",
-  alternates: { canonical: "/services" },
-};
+  path: "/services",
+});
 export default function ServicesPage() {
   return (
     <>

@@ -1,12 +1,13 @@
 import { PageIntro } from "@/components/Sections";
 import DemoDirectory from "@/components/DemoDirectory";
 import { publishedDemos } from "@/lib/demos";
-export const metadata = {
+import { pageMetadata } from "@/lib/seo";
+export const metadata = pageMetadata({
   title: "Website Demos",
   description:
     "Explore concept industry website demos from Reba Digital Solutions, clearly labelled as fictional business examples.",
-  alternates: { canonical: "/demos" },
-};
+  path: "/demos",
+});
 export default function DemosPage() {
   return (
     <>
