@@ -2,7 +2,7 @@ import { PhoneCall } from "lucide-react";
 import { PageIntro } from "@/components/Sections";
 import DemoDirectory from "@/components/DemoDirectory";
 import { publishedDemos } from "@/lib/demos";
-import { hellochamber } from "@/lib/hellochamber";
+import { clinicvoice } from "@/lib/clinicvoice";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Live demos",
@@ -27,19 +27,19 @@ export default function DemosPage() {
             <p className="eyebrow">CALL OUR AI RECEPTIONIST</p>
             <h2>
               Call{" "}
-              <a href={`tel:${hellochamber.demoPhone}`}>
-                {hellochamber.demoDisplayPhone}
+              <a href={`tel:${clinicvoice.demoPhone}`}>
+                {clinicvoice.demoDisplayPhone}
               </a>
             </h2>
             <p className="small">
-              {hellochamber.name}, our AI receptionist for doctors, answers in
+              {clinicvoice.name}, our AI receptionist for doctors, answers in
               Bengali, Hindi or English for a demo clinic. Try booking a
               serial.
             </p>
           </div>
           <a
             className="button button-light"
-            href={`tel:${hellochamber.demoPhone}`}
+            href={`tel:${clinicvoice.demoPhone}`}
           >
             <PhoneCall size={18} /> Call the demo line
           </a>

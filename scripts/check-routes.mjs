@@ -48,7 +48,7 @@ for (const route of urls) {
     assert.ok(html.includes('class="demo-card"'));
     assert.ok(html.includes('aria-label="Filter demos by industry"'));
   }
-  if (route === "/hellochamber") {
+  if (route === "/clinicvoice") {
     assert.ok(html.includes('id="try"'));
     assert.ok(html.includes('lang="bn"'));
     assert.ok(html.includes("+91 79658 60374"));
@@ -74,6 +74,9 @@ for (const route of urls) {
 assert.equal((await fetch(base + "/services/not-a-service")).status, 404);
 assert.equal((await fetch(base + "/industries/not-an-industry")).status, 404);
 assert.equal((await fetch(base + "/demos/not-published")).status, 404);
+const renamed = await fetch(base + "/hellochamber", { redirect: "manual" });
+assert.equal(renamed.status, 308, "hellochamber redirects");
+assert.match(renamed.headers.get("location") ?? "", /\/clinicvoice$/);
 const legacy = await fetch(base + "/services/workflow-automation", {
   redirect: "manual",
 });

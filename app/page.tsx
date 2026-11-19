@@ -68,7 +68,7 @@ export default function Home() {
             <Link className="button" href="/contact">
               Discuss your project <ArrowUpRight size={18} />
             </Link>
-            <Link className="text-link" href="/hellochamber#try">
+            <Link className="text-link" href="/clinicvoice#try">
               <PhoneCall size={17} /> Hear our AI receptionist
             </Link>
           </div>
@@ -163,7 +163,7 @@ export default function Home() {
       </section>
       <section id="products" className="section container products-section">
         <p className="eyebrow">OUR PRODUCTS</p>
-        <Link href="/hellochamber" className="product-card">
+        <Link href="/clinicvoice" className="product-card">
           <span className="service-icon">
             <PhoneCall size={24} />
           </span>
@@ -171,7 +171,7 @@ export default function Home() {
             <span className="small-label">
               HEALTHCARE · AI RECEPTIONIST FOR DOCTORS
             </span>
-            <strong>HelloChamber</strong>
+            <strong>ClinicVoice</strong>
             <span>
               Answers your chamber’s phone in Bengali, Hindi or English, books
               serials or time slots, and sends the patient a WhatsApp
@@ -179,7 +179,7 @@ export default function Home() {
             </span>
           </span>
           <span className="text-link">
-            See HelloChamber <ArrowUpRight size={18} />
+            See ClinicVoice <ArrowUpRight size={18} />
           </span>
         </Link>
       </section>

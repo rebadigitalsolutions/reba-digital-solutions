@@ -284,7 +284,7 @@ export type IndustryFocus = {
 // The five industries shown first on the homepage and /industries.
 export const industryFocus: Partial<Record<IndustrySlug, IndustryFocus>> = {
   clinics: {
-    lead: "HelloChamber, an AI receptionist that answers your chamber’s calls.",
+    lead: "ClinicVoice, an AI receptionist that answers your chamber’s calls.",
     points: [
       "Answers in Bengali, Hindi or English, day and night.",
       "Books serials or time slots from your real schedule.",
@@ -292,9 +292,9 @@ export const industryFocus: Partial<Record<IndustrySlug, IndustryFocus>> = {
     ],
     proof: {
       kind: "Our product",
-      text: "HelloChamber is our own product, with a live demo line you can call.",
+      text: "ClinicVoice is our own product, with a live demo line you can call.",
     },
-    cta: { label: "Try it: call the demo line", href: "/hellochamber#try" },
+    cta: { label: "Try it: call the demo line", href: "/clinicvoice#try" },
   },
   "real-estate-agents": {
     lead: "Listings platforms, and an AI agent that books site visits and qualifies leads.",

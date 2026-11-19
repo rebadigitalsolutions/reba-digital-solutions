@@ -46,7 +46,7 @@ export default function AboutPage() {
             <p>
               Pritam founded Reba Digital Solutions. Today Reba builds custom
               software and ERP, mobile apps and AI agents, including
-              HelloChamber, our AI receptionist for doctors.
+              ClinicVoice, our AI receptionist for doctors.
             </p>
             <ul className="badge-list" aria-label="Business credentials">
               {badges.map((b) => (

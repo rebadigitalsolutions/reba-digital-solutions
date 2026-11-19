@@ -1,9 +1,9 @@
-// Facts for HelloChamber, our AI receptionist product for doctors.
-// Brand decided 19 Nov 2026. hellochamber.in is not bought yet, so the page
-// lives on this site at /hellochamber.
-export const hellochamber = {
-  name: "HelloChamber",
-  path: "/hellochamber",
+// Facts for ClinicVoice, our AI receptionist product for doctors.
+// Renamed from HelloChamber. The page lives on this site at /clinicvoice;
+// /hellochamber redirects here.
+export const clinicvoice = {
+  name: "ClinicVoice",
+  path: "/clinicvoice",
   // Live demo line (demo clinic "Arpan Healthcare"). Calls use demo credit.
   demoPhone: "+917965860374",
   demoDisplayPhone: "+91 79658 60374",

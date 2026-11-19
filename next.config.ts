@@ -19,6 +19,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Product renamed from HelloChamber to ClinicVoice.
+        source: "/hellochamber",
+        destination: "/clinicvoice",
+        permanent: true,
+      },
+      {
         // Workflow automation merged into the AI agents pillar.
         source: "/services/workflow-automation",
         destination: "/services/ai-automation",

@@ -45,14 +45,14 @@ export default function WorkPage() {
         <div className="portfolio-extra">
           <div>
             <p className="eyebrow">OUR PRODUCTS</p>
-            <h2>HelloChamber, our AI receptionist for doctors</h2>
+            <h2>ClinicVoice, our AI receptionist for doctors</h2>
             <p>
               Our own product, not client work. It answers a chamber’s calls,
               books serials and sends WhatsApp confirmations.
             </p>
           </div>
-          <Link className="text-link" href="/hellochamber">
-            See HelloChamber <ArrowUpRight size={18} />
+          <Link className="text-link" href="/clinicvoice">
+            See ClinicVoice <ArrowUpRight size={18} />
           </Link>
         </div>
         <div className="portfolio-extra">

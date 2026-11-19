@@ -42,7 +42,7 @@ export default function Footer() {
         </div>
         <div>
           <h2>Explore</h2>
-          <Link href="/hellochamber">HelloChamber</Link>
+          <Link href="/clinicvoice">ClinicVoice</Link>
           <Link href="/work">Client work</Link>
           <Link href="/demos">Live demos</Link>
           <Link href="/about">About Reba</Link>

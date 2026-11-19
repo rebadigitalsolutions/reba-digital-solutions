@@ -91,7 +91,7 @@ export const services: Service[] = [
       "Testing with real calls before going live",
     ],
     example:
-      "HelloChamber, our AI receptionist for doctors, answers a chamber’s phone, books serials from the real schedule and sends the patient a WhatsApp confirmation.",
+      "ClinicVoice, our AI receptionist for doctors, answers a chamber’s phone, books serials from the real schedule and sends the patient a WhatsApp confirmation.",
     inputs:
       "Your common questions, timings, prices or schedule, how bookings work today and who should take calls the AI hands over.",
     faq: [

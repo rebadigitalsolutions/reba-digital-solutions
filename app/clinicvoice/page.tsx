@@ -3,7 +3,7 @@ import { Noto_Sans_Bengali } from "next/font/google";
 import { ArrowUpRight, MessageCircle, PhoneCall } from "lucide-react";
 import { FAQ, EnquiryBanner } from "@/components/Sections";
 import { business } from "@/lib/business";
-import { hellochamber } from "@/lib/hellochamber";
+import { clinicvoice } from "@/lib/clinicvoice";
 import { pageMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
 
@@ -13,18 +13,18 @@ const bengali = Noto_Sans_Bengali({
   display: "swap",
 });
 
-const title = "HelloChamber | AI receptionist for doctors in Kolkata";
+const title = "ClinicVoice | AI receptionist for doctors in Kolkata";
 const description =
   "An AI receptionist that answers your chamber’s calls in Bengali, Hindi and English, books serials and sends WhatsApp confirmations.";
 export const metadata = {
-  ...pageMetadata({ title, description, path: "/hellochamber" }),
+  ...pageMetadata({ title, description, path: "/clinicvoice" }),
   title: { absolute: title },
 };
 
 const steps: [string, string][] = [
   [
     "You keep your number",
-    "Calls forward to HelloChamber, or only the calls your staff miss.",
+    "Calls forward to ClinicVoice, or only the calls your staff miss.",
   ],
   [
     "The AI talks to the patient",
@@ -52,7 +52,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Do I need a new number?",
-    "No. Your number stays; calls forward to HelloChamber.",
+    "No. Your number stays; calls forward to ClinicVoice.",
   ],
   [
     "What if a patient wants to talk to a person?",
@@ -60,7 +60,7 @@ const faqs: [string, string][] = [
   ],
   [
     "Is patient data safe?",
-    "It follows India’s DPDP Act. The database is in Mumbai, and the data belongs to your clinic. Read the HelloChamber privacy notice for details.",
+    "It follows India’s DPDP Act. The database is in Mumbai, and the data belongs to your clinic. Read the ClinicVoice privacy notice for details.",
   ],
   [
     // FILL: confirm the usual start time.
@@ -69,7 +69,7 @@ const faqs: [string, string][] = [
   ],
 ];
 
-export default function HelloChamberPage() {
+export default function ClinicVoicePage() {
   return (
     <>
       <script
@@ -79,10 +79,10 @@ export default function HelloChamberPage() {
             {
               "@context": "https://schema.org",
               "@type": "SoftwareApplication",
-              name: hellochamber.name,
+              name: clinicvoice.name,
               applicationCategory: "BusinessApplication",
               description,
-              url: `${siteUrl}${hellochamber.path}`,
+              url: `${siteUrl}${clinicvoice.path}`,
               inLanguage: ["bn", "hi", "en"],
               provider: { "@type": "Organization", name: business.name },
             },
@@ -99,18 +99,18 @@ export default function HelloChamberPage() {
         }}
       />
       <section className="page-intro container hc-intro">
-        <p className="eyebrow">HELLOCHAMBER, OUR AI RECEPTIONIST FOR DOCTORS</p>
+        <p className="eyebrow">CLINICVOICE, OUR AI RECEPTIONIST FOR DOCTORS</p>
         <h1>Never miss a patient’s call again.</h1>
         <p lang="bn" className={`hc-bn hc-bn-headline ${bengali.className}`}>
           রোগীর একটাও ফোন আর মিস হবে না।
         </p>
         <p className="hc-sub">
-          HelloChamber answers your chamber’s phone in Bengali, Hindi or
+          ClinicVoice answers your chamber’s phone in Bengali, Hindi or
           English, books serials or time slots, and sends the patient a
           WhatsApp confirmation, day and night.
         </p>
         <p lang="bn" className={`hc-bn ${bengali.className}`}>
-          HelloChamber আপনার চেম্বারের ফোন ধরে, বাংলা, হিন্দি বা ইংরেজিতে কথা
+          ClinicVoice আপনার চেম্বারের ফোন ধরে, বাংলা, হিন্দি বা ইংরেজিতে কথা
           বলে, সিরিয়াল বা সময় বুক করে, আর রোগীকে হোয়াটসঅ্যাপে কনফার্মেশন পাঠায়,
           দিনরাত।
         </p>
@@ -122,20 +122,20 @@ export default function HelloChamberPage() {
             <p className="eyebrow">TRY IT</p>
             <h2>
               Call{" "}
-              <a href={`tel:${hellochamber.demoPhone}`}>
-                {hellochamber.demoDisplayPhone}
+              <a href={`tel:${clinicvoice.demoPhone}`}>
+                {clinicvoice.demoDisplayPhone}
               </a>{" "}
               and book a serial yourself.
             </h2>
             <p lang="bn" className={`hc-bn ${bengali.className}`}>
-              নিজে ফোন করে দেখুন: {hellochamber.demoDisplayPhone}
+              নিজে ফোন করে দেখুন: {clinicvoice.demoDisplayPhone}
             </p>
             <p className="small">
               This is our demo line, for a demo clinic. WhatsApp confirmations
               from the demo line are not sent to website visitors yet.
             </p>
           </div>
-          <a className="button button-light" href={`tel:${hellochamber.demoPhone}`}>
+          <a className="button button-light" href={`tel:${clinicvoice.demoPhone}`}>
             <PhoneCall size={18} /> Call the demo line
           </a>
         </section>
@@ -194,18 +194,18 @@ export default function HelloChamberPage() {
             <p className="small">
               <a
                 className="text-link"
-                href={hellochamber.privacyUrl}
+                href={clinicvoice.privacyUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                HelloChamber privacy notice <ArrowUpRight size={15} />
+                ClinicVoice privacy notice <ArrowUpRight size={15} />
               </a>
             </p>
           </section>
         </div>
         <aside className="detail-aside">
           <p className="eyebrow">TALK TO US</p>
-          <h2>Want HelloChamber for your chamber?</h2>
+          <h2>Want ClinicVoice for your chamber?</h2>
           <p>Message us on WhatsApp, or book a visit and we’ll come to you.</p>
           <a
             className="button"

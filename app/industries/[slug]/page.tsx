@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { industries, industryFocus } from "@/lib/industries";
-import { hellochamber } from "@/lib/hellochamber";
+import { clinicvoice } from "@/lib/clinicvoice";
 import { services } from "@/lib/services";
 import { PageIntro, BackLink } from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
@@ -22,7 +22,7 @@ export async function generateMetadata({
     return pageMetadata({
       title: "AI receptionist and websites for doctors and clinics in Kolkata",
       description:
-        "HelloChamber answers your chamber’s calls in Bengali, Hindi and English, books serials and sends WhatsApp confirmations. Clinic websites too.",
+        "ClinicVoice answers your chamber’s calls in Bengali, Hindi and English, books serials and sends WhatsApp confirmations. Clinic websites too.",
       path: `/industries/${slug}`,
     });
   const f = industryFocus[i.slug];
@@ -98,7 +98,7 @@ export default async function IndustryPage({
               <p className="small">{focus.proof.text}</p>
               {isClinic && (
                 <p>
-                  Call {hellochamber.demoDisplayPhone} and book a serial
+                  Call {clinicvoice.demoDisplayPhone} and book a serial
                   yourself.
                 </p>
               )}
@@ -109,8 +109,8 @@ export default async function IndustryPage({
                   </Link>
                 )}
                 {isClinic && (
-                  <Link className="text-link" href="/hellochamber">
-                    About HelloChamber <ArrowUpRight size={17} />
+                  <Link className="text-link" href="/clinicvoice">
+                    About ClinicVoice <ArrowUpRight size={17} />
                   </Link>
                 )}
               </div>
@@ -186,8 +186,8 @@ export default async function IndustryPage({
             );
           })}
           {isClinic && (
-            <Link href="/hellochamber">
-              HelloChamber: AI receptionist
+            <Link href="/clinicvoice">
+              ClinicVoice: AI receptionist
               <ArrowUpRight size={17} />
             </Link>
           )}

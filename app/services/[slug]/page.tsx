@@ -2,7 +2,7 @@ import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { groups, services } from "@/lib/services";
-import { hellochamber } from "@/lib/hellochamber";
+import { clinicvoice } from "@/lib/clinicvoice";
 import { industries } from "@/lib/industries";
 import { PageIntro, BackLink, FAQ } from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
@@ -106,10 +106,10 @@ export default async function ServicePage({
                 <p className="eyebrow">HEAR IT FOR YOURSELF</p>
                 <h2>Call our AI receptionist.</h2>
                 <p>
-                  {hellochamber.name} is our AI receptionist for doctors. Call
+                  {clinicvoice.name} is our AI receptionist for doctors. Call
                   the demo line and book a serial yourself.
                 </p>
-                <Link className="button" href="/hellochamber#try">
+                <Link className="button" href="/clinicvoice#try">
                   Call our AI receptionist <ArrowUpRight size={17} />
                 </Link>
               </section>
@@ -165,8 +165,8 @@ export default async function ServicePage({
           </Link>
           <p className="eyebrow related-label">RELATED</p>
           {s.group === "ai" && (
-            <Link href="/hellochamber">
-              {hellochamber.name}: AI receptionist for doctors
+            <Link href="/clinicvoice">
+              {clinicvoice.name}: AI receptionist for doctors
               <ArrowUpRight size={17} />
             </Link>
           )}

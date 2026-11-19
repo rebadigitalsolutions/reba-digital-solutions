@@ -13,7 +13,7 @@ const links = [
 ];
 // Shown as a "Products" menu after Services.
 const products = [
-  ["HelloChamber", "/hellochamber", "AI receptionist for doctors"],
+  ["ClinicVoice", "/clinicvoice", "AI receptionist for doctors"],
 ];
 export default function Navbar() {
   const [open, setOpen] = useState(false);
