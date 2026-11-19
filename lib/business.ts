@@ -7,3 +7,9 @@ export const business = {
   emails: ["hello@rebadigitalsolutions.com"],
   enquiryInbox: "hello@rebadigitalsolutions.com",
 };
+// Only credentials that are true. Do not write "Meta Verified": that is
+// Meta's paid badge, not business verification.
+export const badges = [
+  "Udyam-registered MSME",
+  "Business verified by Meta (WhatsApp Business)",
+];

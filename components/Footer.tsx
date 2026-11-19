@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { business } from "@/lib/business";
+import { business, badges } from "@/lib/business";
 import { enabledSocialLinks } from "@/lib/social";
 import { socialIconMap } from "@/components/SocialIcons";
 export default function Footer() {
@@ -17,27 +17,34 @@ export default function Footer() {
             </span>
           </Link>
           <p>
-            Digital foundations.
+            Custom software, apps
             <br />
-            Real business possibilities.
+            and AI agents that do real work.
           </p>
           <p className="small">
             Kolkata, India.
             <br />
-            Working with businesses near and far.
+            Working with businesses across India.
           </p>
+          <ul className="badge-list" aria-label="Business credentials">
+            {badges.map((b) => (
+              <li key={b}>{b}</li>
+            ))}
+          </ul>
         </div>
         <div>
           <h2>What we do</h2>
-          <Link href="/services#build">Build your presence</Link>
+          <Link href="/services#ai">AI agents</Link>
+          <Link href="/services#software">Custom software & ERP</Link>
+          <Link href="/services#apps">Apps & websites</Link>
           <Link href="/services#grow">Grow your visibility</Link>
-          <Link href="/services#automate">Automate your operations</Link>
           <Link href="/industries">Industries we serve</Link>
         </div>
         <div>
           <h2>Explore</h2>
-          <Link href="/work">Client Work</Link>
-          <Link href="/demos">Website Demos</Link>
+          <Link href="/hellochamber">HelloChamber</Link>
+          <Link href="/work">Client work</Link>
+          <Link href="/demos">Live demos</Link>
           <Link href="/about">About Reba</Link>
           <Link href="/contact">Contact</Link>
         </div>

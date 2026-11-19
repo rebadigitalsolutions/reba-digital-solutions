@@ -1,9 +1,10 @@
 import { PageIntro, IndustryLinks, EnquiryBanner } from "@/components/Sections";
+import { industries } from "@/lib/industries";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Industries",
   description:
-    "Digital services for 15 business sectors, from property and healthcare to hospitality, retail and B2B suppliers.",
+    "AI agents, custom software and apps for healthcare, real estate, retail and jewellery, education, banking and finance, and more.",
   path: "/industries",
 });
 export default function IndustriesPage() {
@@ -12,13 +13,17 @@ export default function IndustriesPage() {
       <PageIntro
         eyebrow="YOUR BUSINESS, IN CONTEXT"
         title="Different journeys. Thoughtful solutions."
-        description="Start with the questions your customers ask and the tasks your team handles. Explore how a website, marketing and connected systems can support your industry."
+        description="Start with the calls your customers make and the tasks your team handles. See how software, apps and AI agents can support your industry."
       />
       <div className="container inner-section">
-        <IndustryLinks />
+        <h2 className="industry-group-title">Where we focus</h2>
+        <IndustryLinks focus />
+        <h2 className="industry-group-title">All industries</h2>
+        <IndustryLinks rest />
         <p className="small spaced-link">
-          These are service approaches for each industry, not claims of
-          completed projects in every sector.
+          Pages marked “Use case” describe an approach, not completed client
+          projects. Of the {industries.length} industries here, only those that
+          name a client or product have one.
         </p>
       </div>
       <EnquiryBanner />

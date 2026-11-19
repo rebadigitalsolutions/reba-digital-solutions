@@ -1,7 +1,8 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { industries } from "@/lib/industries";
+import { industries, industryFocus } from "@/lib/industries";
+import { hellochamber } from "@/lib/hellochamber";
 import { services } from "@/lib/services";
 import { PageIntro, BackLink } from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
@@ -17,9 +18,19 @@ export async function generateMetadata({
   const { slug } = await params;
   const i = industries.find((i) => i.slug === slug);
   if (!i) return { title: "Industry not found" };
+  if (i.slug === "clinics")
+    return pageMetadata({
+      title: "AI receptionist and websites for doctors and clinics in Kolkata",
+      description:
+        "HelloChamber answers your chamber’s calls in Bengali, Hindi and English, books serials and sends WhatsApp confirmations. Clinic websites too.",
+      path: `/industries/${slug}`,
+    });
+  const f = industryFocus[i.slug];
   return pageMetadata({
-    title: `Digital services for ${i.title.toLowerCase()}`,
-    description: i.need,
+    title: f
+      ? `${i.title}: software and AI agents`
+      : `Digital services for ${i.title.toLowerCase()}`,
+    description: f ? f.lead : i.need,
     path: `/industries/${slug}`,
   });
 }
@@ -31,6 +42,8 @@ export default async function IndustryPage({
   const { slug } = await params;
   const i = industries.find((i) => i.slug === slug);
   if (!i) notFound();
+  const focus = industryFocus[i.slug];
+  const isClinic = i.slug === "clinics";
   return (
     <>
       <script
@@ -61,12 +74,55 @@ export default async function IndustryPage({
         <BackLink href="/industries">All industries</BackLink>
       </div>
       <PageIntro
-        eyebrow="INDUSTRY SOLUTIONS"
+        eyebrow={
+          focus ? `INDUSTRY · ${focus.proof.kind.toUpperCase()}` : "INDUSTRY SOLUTIONS"
+        }
         title={i.title}
-        description={i.need}
+        description={focus ? focus.lead : i.need}
       />
       <div className="container inner-section detail-grid">
         <div className="detail-main">
+          {focus && (
+            <section className="focus-panel">
+              <span className="focus-proof">{focus.proof.kind}</span>
+              <h2>
+                {isClinic
+                  ? "Never miss a patient’s call again."
+                  : "What we lead with"}
+              </h2>
+              <ul>
+                {focus.points.map((p) => (
+                  <li key={p}>{p}</li>
+                ))}
+              </ul>
+              <p className="small">{focus.proof.text}</p>
+              {isClinic && (
+                <p>
+                  Call {hellochamber.demoDisplayPhone} and book a serial
+                  yourself.
+                </p>
+              )}
+              <div className="actions">
+                {focus.cta && (
+                  <Link className="button" href={focus.cta.href}>
+                    {focus.cta.label} <ArrowUpRight size={17} />
+                  </Link>
+                )}
+                {isClinic && (
+                  <Link className="text-link" href="/hellochamber">
+                    About HelloChamber <ArrowUpRight size={17} />
+                  </Link>
+                )}
+              </div>
+            </section>
+          )}
+          {isClinic && (
+            <section>
+              <p className="eyebrow">ALSO AVAILABLE</p>
+              <h2>A clinic website</h2>
+              <p>{i.need}</p>
+            </section>
+          )}
           <section>
             <h2>Design around the customer journey.</h2>
             <p>{i.journey}</p>
@@ -107,10 +163,13 @@ export default async function IndustryPage({
               website, then plan search visibility or operational improvements
               around your priorities.
             </p>
-            <p className="small">
-              This page describes an approach for your industry. It is not a
-              client case study or a live concept demo.
-            </p>
+            {focus?.proof.kind !== "Client work" &&
+              focus?.proof.kind !== "Our product" && (
+                <p className="small">
+                  Use case: this page describes an approach for your industry.
+                  It is not a client case study or a live concept demo.
+                </p>
+              )}
           </section>
         </div>
         <aside className="detail-aside">
@@ -118,6 +177,7 @@ export default async function IndustryPage({
           <h2>Make the pieces work together.</h2>
           {i.services.map((slug) => {
             const s = services.find((s) => s.slug === slug)!;
+            if (!s) return null;
             return (
               <Link key={slug} href={`/services/${slug}`}>
                 {s.title}
@@ -125,8 +185,14 @@ export default async function IndustryPage({
               </Link>
             );
           })}
+          {isClinic && (
+            <Link href="/hellochamber">
+              HelloChamber: AI receptionist
+              <ArrowUpRight size={17} />
+            </Link>
+          )}
           <Link className="button" href={`/contact?industry=${i.slug}`}>
-            Discuss Your Project <ArrowUpRight size={17} />
+            Discuss your project <ArrowUpRight size={17} />
           </Link>
         </aside>
       </div>

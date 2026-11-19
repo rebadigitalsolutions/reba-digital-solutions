@@ -1,25 +1,57 @@
+import { PhoneCall } from "lucide-react";
 import { PageIntro } from "@/components/Sections";
 import DemoDirectory from "@/components/DemoDirectory";
 import { publishedDemos } from "@/lib/demos";
+import { hellochamber } from "@/lib/hellochamber";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
-  title: "Website Demos",
+  title: "Live demos",
   description:
-    "Explore concept industry website demos from Reba Digital Solutions, clearly labelled as fictional business examples.",
+    "Call our AI receptionist on a live demo line, and explore concept industry websites from Reba Digital Solutions, labelled as fictional businesses.",
   path: "/demos",
 });
 export default function DemosPage() {
   return (
     <>
       <PageIntro
-        eyebrow="WEBSITE DEMOS"
-        title="A place to explore what’s possible."
-        description="Industry-focused concept websites to help you picture a useful online experience for your business. Every demo represents a fictional business."
+        eyebrow="LIVE DEMOS"
+        title="Hear our AI agents for yourself."
+        description="Call our AI receptionist and book a serial yourself. Below, concept websites show what a useful online experience can look like."
       />
+      <section className="container" aria-labelledby="ai-demos">
+        <h2 id="ai-demos" className="industry-group-title">
+          AI demos
+        </h2>
+        <div className="hc-try">
+          <div>
+            <p className="eyebrow">CALL OUR AI RECEPTIONIST</p>
+            <h2>
+              Call{" "}
+              <a href={`tel:${hellochamber.demoPhone}`}>
+                {hellochamber.demoDisplayPhone}
+              </a>
+            </h2>
+            <p className="small">
+              {hellochamber.name}, our AI receptionist for doctors, answers in
+              Bengali, Hindi or English for a demo clinic. Try booking a
+              serial.
+            </p>
+          </div>
+          <a
+            className="button button-light"
+            href={`tel:${hellochamber.demoPhone}`}
+          >
+            <PhoneCall size={18} /> Call the demo line
+          </a>
+        </div>
+        {/* FILL: "Try our WhatsApp agent" once the WhatsApp demo is public,
+            and short call recordings in Bengali and Hindi. */}
+      </section>
       <section
         className="container inner-section"
         aria-label="Website demo directory"
       >
+        <h2 className="industry-group-title">Website concepts</h2>
         <DemoDirectory entries={publishedDemos} />
       </section>
     </>

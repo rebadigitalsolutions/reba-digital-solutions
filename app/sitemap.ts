@@ -7,6 +7,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   return [
     "",
     "/services",
+    "/hellochamber",
     "/industries",
     "/work",
     "/demos",

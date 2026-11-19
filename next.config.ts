@@ -18,6 +18,12 @@ const nextConfig: NextConfig = {
         destination: "https://www.rebadigitalsolutions.com/:path*",
         permanent: true,
       },
+      {
+        // Workflow automation merged into the AI agents pillar.
+        source: "/services/workflow-automation",
+        destination: "/services/ai-automation",
+        permanent: true,
+      },
     ];
   },
 };

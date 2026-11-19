@@ -31,7 +31,7 @@ export const industries = [
     ],
     inputs:
       "Current listings, permission to use property photos, service areas and rules for keeping availability accurate.",
-    services: ["websites", "seo", "crm"],
+    services: ["websites", "whatsapp-ai-agents", "crm"],
   },
   {
     slug: "law-firms",
@@ -48,11 +48,11 @@ export const industries = [
     ],
     inputs:
       "Approved practice descriptions, professional details and your requirements for confidentiality and published content.",
-    services: ["websites", "seo", "workflow-automation"],
+    services: ["websites", "seo", "ai-automation"],
   },
   {
     slug: "clinics",
-    title: "Doctors & clinics",
+    title: "Doctors, clinics & diagnostic centres",
     label: "Healthcare & clinics",
     need: "Help patients find the right service and request an appointment.",
     journey:
@@ -65,7 +65,7 @@ export const industries = [
     ],
     inputs:
       "Approved clinician details, clinic hours, services and appointment rules. A general enquiry form should not request medical histories.",
-    services: ["websites", "seo", "workflow-automation"],
+    services: ["ai-voice-agents", "whatsapp-ai-agents", "websites"],
   },
   {
     slug: "dentists",
@@ -82,7 +82,7 @@ export const industries = [
     ],
     inputs:
       "Accurate service descriptions, professional profiles, approved images and booking procedures.",
-    services: ["websites", "seo", "workflow-automation"],
+    services: ["websites", "seo", "ai-automation"],
   },
   {
     slug: "restaurants",
@@ -116,7 +116,7 @@ export const industries = [
     ],
     inputs:
       "Room details, approved photographs, booking policies and the system used to manage availability.",
-    services: ["websites", "seo", "workflow-automation"],
+    services: ["websites", "seo", "ai-automation"],
   },
   {
     slug: "interior-designers",
@@ -218,12 +218,12 @@ export const industries = [
     ],
     inputs:
       "Current course details, admissions procedures, approved faculty information and accurate schedules.",
-    services: ["websites", "paid-advertising", "crm"],
+    services: ["ai-voice-agents", "whatsapp-ai-agents", "websites"],
   },
   {
     slug: "retail",
-    title: "Retail & ecommerce",
-    label: "Retail & ecommerce",
+    title: "Retail & jewellery",
+    label: "Retail, jewellery & ecommerce",
     need: "Make products easy to discover and buying information easy to understand.",
     journey:
       "A shopper finds a product, compares variants and delivery information, then checks out or asks a product question.",
@@ -235,7 +235,7 @@ export const industries = [
     ],
     inputs:
       "Product catalogue, images, inventory rules, delivery information and approved returns policies.",
-    services: ["ecommerce", "paid-advertising", "workflow-automation"],
+    services: ["custom-software", "ecommerce", "whatsapp-ai-agents"],
   },
   {
     slug: "manufacturers",
@@ -254,5 +254,99 @@ export const industries = [
       "Accurate specifications, approved capabilities and certifications, product assets and quotation requirements.",
     services: ["websites", "crm", "dashboards"],
   },
+  {
+    slug: "finance",
+    title: "Banking & finance",
+    label: "Banking & finance",
+    need: "Remind customers about payments and answer their questions without tying up your team.",
+    journey:
+      "A customer gets a payment reminder call or message, asks about the amount or due date, and is handed to a person if they need one.",
+    features: [
+      "Payment reminder calls and WhatsApp messages",
+      "Answers to common questions from your records",
+      "Follow-up and callback requests for your team",
+      "Call summaries and a record of every reminder",
+    ],
+    inputs:
+      "Approved reminder scripts, the data each reminder may use, your rules for consent and calling hours, and who handles hand-overs.",
+    services: ["ai-voice-agents", "whatsapp-ai-agents", "crm"],
+  },
 ] as const;
 export type IndustrySlug = (typeof industries)[number]["slug"];
+
+export type IndustryFocus = {
+  /** One-line headline for the top of the industry page. */
+  lead: string;
+  points: string[];
+  proof: { kind: "Our product" | "Client work" | "Use case"; text: string };
+  cta?: { label: string; href: string };
+};
+// The five industries shown first on the homepage and /industries.
+export const industryFocus: Partial<Record<IndustrySlug, IndustryFocus>> = {
+  clinics: {
+    lead: "HelloChamber, an AI receptionist that answers your chamber’s calls.",
+    points: [
+      "Answers in Bengali, Hindi or English, day and night.",
+      "Books serials or time slots from your real schedule.",
+      "Sends the patient a WhatsApp confirmation after every booking.",
+    ],
+    proof: {
+      kind: "Our product",
+      text: "HelloChamber is our own product, with a live demo line you can call.",
+    },
+    cta: { label: "Try it: call the demo line", href: "/hellochamber#try" },
+  },
+  "real-estate-agents": {
+    lead: "Listings platforms, and an AI agent that books site visits and qualifies leads.",
+    points: [
+      "A listings website with an admin panel for your team.",
+      "Replies to WhatsApp enquiries and books site visits.",
+      "Asks qualifying questions before your agent calls back.",
+    ],
+    proof: {
+      kind: "Client work",
+      text: "We built Spacevyu, a real estate listings platform with an admin panel.",
+    },
+    cta: { label: "See our client work", href: "/work" },
+  },
+  retail: {
+    lead: "Custom ERP, stock and billing apps for retail and jewellery businesses.",
+    points: [
+      "Stock, billing and orders in one system.",
+      "Built around how your shop actually runs.",
+      "WhatsApp replies for order status and product questions.",
+    ],
+    proof: {
+      kind: "Client work",
+      text: "We built a custom jewellery ERP app for Biswas Jewellers.",
+    },
+    cta: { label: "See our client work", href: "/work" },
+  },
+  education: {
+    lead: "An AI agent for admission enquiries, on calls and WhatsApp.",
+    points: [
+      "Answers course, fee and schedule questions at any hour.",
+      "Takes the student’s details and books a callback.",
+      "Speaks Bengali, Hindi and English.",
+    ],
+    proof: {
+      kind: "Use case",
+      text: "This describes how our AI agents can work for education. It is not a client case study.",
+    },
+  },
+  finance: {
+    lead: "AI calls for payment reminders, follow-ups and common questions.",
+    points: [
+      "Reminds customers about payments by call or WhatsApp.",
+      "Answers questions from your records, not from guesswork.",
+      "Hands the call to your team when a person is needed.",
+    ],
+    proof: {
+      kind: "Use case",
+      text: "This describes how our AI agents can work for banking and finance. It is not a client case study.",
+    },
+  },
+};
+export const focusIndustries = Object.keys(industryFocus).map(
+  (slug) => industries.find((i) => i.slug === slug)!,
+);

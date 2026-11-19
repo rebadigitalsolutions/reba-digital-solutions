@@ -1,7 +1,9 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { services } from "@/lib/services";
+import { groups, services } from "@/lib/services";
+import { hellochamber } from "@/lib/hellochamber";
+import { industries } from "@/lib/industries";
 import { PageIntro, BackLink, FAQ } from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
 import { siteUrl } from "@/lib/site";
@@ -17,8 +19,8 @@ export async function generateMetadata({
   const s = services.find((s) => s.slug === slug);
   if (!s) return { title: "Service not found" };
   return pageMetadata({
-    title: s.title,
-    description: s.summary,
+    title: s.metaTitle ?? s.title,
+    description: s.metaDescription ?? s.summary,
     path: `/services/${slug}`,
   });
 }
@@ -60,12 +62,59 @@ export default async function ServicePage({
         <BackLink href="/services">All services</BackLink>
       </div>
       <PageIntro
-        eyebrow={`${s.group.toUpperCase()} / SERVICES`}
+        eyebrow={`${groups.find((g) => g.slug === s.group)!.title.toUpperCase()} / SERVICES`}
         title={s.title}
         description={s.summary}
       />
       <div className="container inner-section detail-grid">
         <div className="detail-main">
+          {s.agent && (
+            <>
+              <section>
+                <h2>What it does</h2>
+                <p>{s.agent.does}</p>
+              </section>
+              <section>
+                <h2>Where it fits</h2>
+                <ul>
+                  {s.agent.fits.map(([where, what]) => (
+                    <li key={where}>
+                      <strong>{where}:</strong> {what}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+              <section>
+                <h2>How it stays correct</h2>
+                {s.agent.correctness.map((c) => (
+                  <p key={c}>{c}</p>
+                ))}
+              </section>
+              <section>
+                <h2>Languages</h2>
+                <p>{s.agent.languages}</p>
+              </section>
+              <section>
+                <h2>Your data</h2>
+                <p>{s.agent.data}</p>
+              </section>
+              <section>
+                <h2>Going live and pricing</h2>
+                <p>{s.agent.pricing}</p>
+              </section>
+              <section className="demo-callout">
+                <p className="eyebrow">HEAR IT FOR YOURSELF</p>
+                <h2>Call our AI receptionist.</h2>
+                <p>
+                  {hellochamber.name} is our AI receptionist for doctors. Call
+                  the demo line and book a serial yourself.
+                </p>
+                <Link className="button" href="/hellochamber#try">
+                  Call our AI receptionist <ArrowUpRight size={17} />
+                </Link>
+              </section>
+            </>
+          )}
           <section>
             <h2>Who it’s for</h2>
             <p>{s.audience}</p>
@@ -112,8 +161,32 @@ export default async function ServicePage({
             discuss a useful next step.
           </p>
           <Link className="button" href={`/contact?service=${s.slug}`}>
-            Discuss This Service <ArrowUpRight size={17} />
+            Discuss this service <ArrowUpRight size={17} />
           </Link>
+          <p className="eyebrow related-label">RELATED</p>
+          {s.group === "ai" && (
+            <Link href="/hellochamber">
+              {hellochamber.name}: AI receptionist for doctors
+              <ArrowUpRight size={17} />
+            </Link>
+          )}
+          {services
+            .filter((o) => o.group === s.group && o.slug !== s.slug)
+            .map((o) => (
+              <Link key={o.slug} href={`/services/${o.slug}`}>
+                {o.title}
+                <ArrowUpRight size={17} />
+              </Link>
+            ))}
+          {industries
+            .filter((i) => (i.services as readonly string[]).includes(s.slug))
+            .slice(0, 3)
+            .map((i) => (
+              <Link key={i.slug} href={`/industries/${i.slug}`}>
+                For {i.title.toLowerCase()}
+                <ArrowUpRight size={17} />
+              </Link>
+            ))}
         </aside>
       </div>
     </>

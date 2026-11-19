@@ -6,14 +6,14 @@ import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Services",
   description:
-    "Explore website development, marketing, CRM, reporting and automation services, organised around Build, Grow and Automate.",
+    "AI voice and WhatsApp agents, custom software and ERP, mobile apps, websites and marketing. Services from Reba Digital Solutions in Kolkata.",
   path: "/services",
 });
 export default function ServicesPage() {
   return (
     <>
       <PageIntro
-        eyebrow="BUILD · GROW · AUTOMATE"
+        eyebrow="AI AGENTS · SOFTWARE · APPS · GROW"
         title="The right tools for your next step."
         description="Start with a specific business need. We’ll help you define the work, choose suitable tools and connect the pieces."
       />

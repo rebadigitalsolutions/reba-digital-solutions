@@ -17,10 +17,10 @@ for (const route of urls) {
   );
   assert.ok(
     html.includes(
-      `rel="canonical" href="https://rebadigitalsolutions.com${route === "/" ? "" : route}"`,
+      `rel="canonical" href="https://www.rebadigitalsolutions.com${route === "/" ? "" : route}"`,
     ) ||
       html.includes(
-        `rel="canonical" href="https://rebadigitalsolutions.com${route}"`,
+        `rel="canonical" href="https://www.rebadigitalsolutions.com${route}"`,
       ),
     `${route}: canonical`,
   );
@@ -48,8 +48,14 @@ for (const route of urls) {
     assert.ok(html.includes('class="demo-card"'));
     assert.ok(html.includes('aria-label="Filter demos by industry"'));
   }
+  if (route === "/hellochamber") {
+    assert.ok(html.includes('id="try"'));
+    assert.ok(html.includes('lang="bn"'));
+    assert.ok(html.includes("+91 79658 60374"));
+  }
   if (route === "/") {
-    assert.match(html, /Explore Our Services/);
+    assert.match(html, /Hear our AI receptionist/);
+    assert.match(html, /Four ways to move/);
     assert.ok(!html.includes("Dental Clinic Website Demo"));
     assert.ok(!html.includes('class="demo-grid"'));
     for (const id of [
@@ -59,6 +65,7 @@ for (const route of urls) {
       "about",
       "pricing",
       "contact",
+      "products",
     ])
       assert.ok(html.includes(`id="${id}"`));
   }
@@ -67,6 +74,11 @@ for (const route of urls) {
 assert.equal((await fetch(base + "/services/not-a-service")).status, 404);
 assert.equal((await fetch(base + "/industries/not-an-industry")).status, 404);
 assert.equal((await fetch(base + "/demos/not-published")).status, 404);
+const legacy = await fetch(base + "/services/workflow-automation", {
+  redirect: "manual",
+});
+assert.equal(legacy.status, 308, "workflow-automation redirects");
+assert.match(legacy.headers.get("location") ?? "", /\/services\/ai-automation$/);
 for (const asset of [
   "/work/sansthita.webp",
   "/work/cherry-n-bean.webp",

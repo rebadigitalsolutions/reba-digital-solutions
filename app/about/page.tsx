@@ -1,9 +1,10 @@
 import { PageIntro, Process, EnquiryBanner } from "@/components/Sections";
+import { badges } from "@/lib/business";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "About Reba",
   description:
-    "A Kolkata-based digital services business helping companies in India and beyond with websites, marketing and practical business systems.",
+    "Reba Digital Solutions is a Kolkata software company building custom software, mobile apps and AI agents for businesses across India. Founded by Pritam Das.",
   path: "/about",
 });
 export default function AboutPage() {
@@ -11,8 +12,8 @@ export default function AboutPage() {
     <>
       <PageIntro
         eyebrow="ABOUT REBA DIGITAL SOLUTIONS"
-        title="Digital work with a business purpose."
-        description="We help businesses improve their digital presence, attract enquiries and streamline operations through websites, apps, software, marketing and automation."
+        title="Software and AI with a business purpose."
+        description="We build custom software, mobile apps, websites and AI agents that answer calls and messages, so businesses can serve customers better and cut the admin."
       />
       <div className="container inner-section">
         <div className="about-statement">
@@ -23,8 +24,8 @@ export default function AboutPage() {
           </h2>
           <div>
             <p>
-              Your website and your internal systems should support the same
-              goals: help customers understand you and help your team take the
+              Your software, your AI agents and your website should support the
+              same goals: help customers reach you and help your team take the
               next step.
             </p>
             <p>
@@ -34,6 +35,26 @@ export default function AboutPage() {
             </p>
           </div>
         </div>
+        <section className="founder" aria-labelledby="founder-heading">
+          {/* FILL: founder photo (public/about/pritam-das.webp) and two lines
+              on background, from Pritam. */}
+          <div>
+            <p className="eyebrow">FOUNDER</p>
+            <h2 id="founder-heading">Pritam Das</h2>
+          </div>
+          <div>
+            <p>
+              Pritam founded Reba Digital Solutions. Today Reba builds custom
+              software and ERP, mobile apps and AI agents, including
+              HelloChamber, our AI receptionist for doctors.
+            </p>
+            <ul className="badge-list" aria-label="Business credentials">
+              {badges.map((b) => (
+                <li key={b}>{b}</li>
+              ))}
+            </ul>
+          </div>
+        </section>
         <div className="about-values">
           {[
             [
@@ -46,7 +67,7 @@ export default function AboutPage() {
             ],
             [
               "A practical handover",
-              "We document what you need to run your website and agree any ongoing support separately.",
+              "We document what you need to run your software, agents and website, and agree any ongoing support separately.",
             ],
           ].map(([title, copy]) => (
             <div key={title}>

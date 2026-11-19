@@ -31,17 +31,34 @@ const { industries } = require("../lib/industries.ts");
 const { services } = require("../lib/services.ts");
 const { validateContact } = require("../lib/contact.ts");
 
-test("published demo catalogue includes the dental concept demo; all 15 industries are supported", () => {
+test("published demo catalogue includes the dental concept demo; all 16 industries are supported", () => {
   assert.equal(demos.length, 1);
   assert.deepEqual(getPublishedDemos(demos), demos);
   assert.equal(demos[0].industry, "dentists");
   assert.equal(demos[0].status, "published");
   assert.ok(fs.existsSync(path.join(root, "public", demos[0].thumbnail)));
-  assert.equal(industries.length, 15);
-  assert.equal(new Set(industries.map((i) => i.slug)).size, 15);
+  assert.equal(industries.length, 16);
+  assert.equal(new Set(industries.map((i) => i.slug)).size, 16);
   for (const i of industries)
     for (const slug of i.services)
       assert.ok(services.some((s) => s.slug === slug));
+});
+test("services sit in four pillars and the five focus industries resolve", () => {
+  const { groups } = require("../lib/services.ts");
+  const { focusIndustries } = require("../lib/industries.ts");
+  assert.deepEqual(
+    groups.map((g) => g.slug),
+    ["ai", "software", "apps", "grow"],
+  );
+  for (const s of services)
+    assert.ok(groups.some((g) => g.slug === s.group), s.slug);
+  assert.ok(!services.some((s) => s.slug === "workflow-automation"));
+  for (const slug of ["ai-voice-agents", "whatsapp-ai-agents", "ai-automation"])
+    assert.ok(services.find((s) => s.slug === slug)?.group === "ai", slug);
+  assert.deepEqual(
+    focusIndustries.map((i) => i.slug),
+    ["clinics", "real-estate-agents", "retail", "education", "finance"],
+  );
 });
 test("publication gate excludes drafts, incomplete entries, unknown industries and unsafe links", () => {
   const fixture = {

@@ -1,7 +1,7 @@
 export type Service = {
   slug: string;
   title: string;
-  group: "build" | "grow" | "automate";
+  group: "ai" | "software" | "apps" | "grow";
   summary: string;
   audience: string;
   problem: string;
@@ -9,71 +9,238 @@ export type Service = {
   example: string;
   inputs: string;
   faq: [string, string][];
+  /** Optional search title and description; fall back to title and summary. */
+  metaTitle?: string;
+  metaDescription?: string;
+  /** AI agent pages answer a fixed set of questions, in this order. */
+  agent?: AgentDetails;
+};
+export type AgentDetails = {
+  does: string;
+  fits: [string, string][];
+  correctness: string[];
+  languages: string;
+  data: string;
+  // FILL: time to go live and pricing model, confirmed by Pritam.
+  pricing: string;
 };
 export const groups = [
   {
-    slug: "build",
-    title: "Build",
+    slug: "ai",
+    more: "Explore AI agents",
+    title: "AI agents",
+    headline: "Calls and chats, handled.",
+    description:
+      "Voice agents that answer your calls and WhatsApp agents that reply and book, in Bengali, Hindi and English.",
+  },
+  {
+    slug: "software",
+    more: "Explore custom software",
+    title: "Custom software",
+    headline: "Software that fits how you work.",
+    description:
+      "ERP, CRM and dashboards built around your stock, billing, orders and team, not the other way round.",
+  },
+  {
+    slug: "apps",
+    more: "Explore apps & websites",
+    title: "Apps & websites",
     headline: "A better digital home.",
     description:
-      "Give customers a clear, useful place to discover your business, buy from you, and get in touch.",
+      "Mobile apps, websites and online stores that give customers a clear place to find you, buy and get in touch.",
   },
   {
     slug: "grow",
+    more: "Explore growth services",
     title: "Grow",
     headline: "Get found. Start conversations.",
     description:
-      "Connect with the right people through clearer content, better search visibility, and focused campaigns.",
-  },
-  {
-    slug: "automate",
-    title: "Automate",
-    headline: "Less admin. More clarity.",
-    description:
-      "Connect your tools, organise your enquiries, and make everyday work easier to manage.",
+      "Connect with the right people through clearer content, better search visibility and focused campaigns.",
   },
 ] as const;
+const agentCorrectness = [
+  "The AI handles the conversation. Answers like prices, availability and bookings come from your system, so it never makes them up.",
+  "When it can’t help, it hands the conversation to your staff or takes a callback request.",
+];
+const agentLanguages =
+  "Bengali, Hindi and English. It follows the customer when they switch languages mid-conversation.";
+const agentData =
+  "Built to India’s Digital Personal Data Protection Act, 2023. Your customers’ data belongs to you, not to us.";
+// FILL: replace with the confirmed go-live time and pricing model.
+const agentPricing =
+  "We agree the setup and a monthly plan, based on usage, after a short call about your business.";
 export const services: Service[] = [
   {
-    slug: "social-media-automation",
-    title: "Instagram & social media automation",
-    group: "automate",
+    slug: "ai-voice-agents",
+    title: "AI voice agents",
+    group: "ai",
+    metaTitle: "AI voice agent for businesses in India",
+    metaDescription:
+      "An AI voice agent that answers your business calls, books appointments and sends reminders in Bengali, Hindi and English, day and night. Built in Kolkata.",
     summary:
-      "Connect social enquiries, approved replies and follow-up tasks to your business workflow.",
+      "Answers your calls, books appointments, sends reminders, in Bengali, Hindi and English, day and night.",
     audience:
-      "Businesses handling recurring Instagram or social media enquiries about services, availability and next steps.",
+      "Businesses that miss calls during busy hours, after closing time or when staff are with a customer.",
     problem:
-      "Repeated questions and scattered direct messages make it hard to keep track of enquiries and know when a person needs to respond.",
+      "Every missed call can be a missed booking. Staff spend hours repeating timings, fees and directions on the phone.",
     deliverables: [
-      "Review of connected accounts and supported platform features",
-      "Approved replies for common enquiries and keyword-based journeys where supported",
-      "Lead capture and CRM routing with agreed permissions",
-      "Notifications and clear handover to a person",
-      "Workflow testing, reporting and team guidance",
+      "Call flows for bookings, questions and reminders",
+      "Connection to your schedule, prices or stock",
+      "Hand-over to staff and callback requests",
+      "Call summaries you can read on your phone",
+      "Testing with real calls before going live",
     ],
     example:
-      "Where supported by the platform, an Instagram enquiry can receive an approved first reply, offer a relevant service link and create a follow-up task. Questions outside the agreed flow are handed to your team.",
+      "HelloChamber, our AI receptionist for doctors, answers a chamber’s phone, books serials from the real schedule and sends the patient a WhatsApp confirmation.",
     inputs:
-      "Business account access through approved connections, frequently asked questions, approved response copy, lead routing rules and a person responsible for escalations.",
+      "Your common questions, timings, prices or schedule, how bookings work today and who should take calls the AI hands over.",
     faq: [
       [
-        "Can you automate every Instagram message?",
-        "No. Available features depend on your account, platform permissions, messaging rules and the tools selected. We check the supported journey before agreeing the scope.",
+        "Do I need a new phone number?",
+        "No. You keep your number. Calls forward to the agent, or only the calls your staff miss.",
       ],
       [
-        "Does this include content creation?",
-        "Content planning and creation are available through our social media service. Automation focuses on the agreed enquiry and operational workflows.",
+        "Can I hear it before deciding?",
+        "Yes. Call our AI receptionist demo line and book a serial yourself.",
+      ],
+    ],
+    agent: {
+      does: "Answers your calls, books appointments, sends reminders, in Bengali, Hindi and English, day and night.",
+      fits: [
+        ["Clinics", "Book serials and appointments, share timings and fees."],
+        [
+          "Real estate",
+          "Book site visits and qualify leads before your team calls back.",
+        ],
+        ["Education", "Answer admission enquiries and take callback requests."],
+        ["Finance", "Payment reminders, follow-ups and common questions."],
+        ["Retail", "Tell customers their order status and shop timings."],
+      ],
+      correctness: agentCorrectness,
+      languages: agentLanguages,
+      data: agentData,
+      pricing: agentPricing,
+    },
+  },
+  {
+    slug: "whatsapp-ai-agents",
+    title: "WhatsApp AI agents",
+    group: "ai",
+    metaTitle: "WhatsApp AI agent for businesses in India",
+    metaDescription:
+      "A WhatsApp AI agent that replies to customers, answers questions, books and qualifies leads in Bengali, Hindi and English. Built in Kolkata.",
+    summary:
+      "Replies to customers on WhatsApp, answers questions, books and qualifies leads.",
+    audience:
+      "Businesses whose customers already message them on WhatsApp and wait too long for a reply.",
+    problem:
+      "WhatsApp messages pile up. The same questions get answered by hand, and leads go cold before anyone replies.",
+    deliverables: [
+      "Conversation flows for questions, bookings and leads",
+      "Connection to your schedule, prices, stock or CRM",
+      "Hand-over to a person when needed",
+      "Set-up on the WhatsApp Business Platform",
+      "Testing and a simple way to see every chat",
+    ],
+    example:
+      "A property enquiry on WhatsApp can get an instant reply, a few qualifying questions and a booked site visit, with the lead passed to the right agent.",
+    inputs:
+      "Your WhatsApp Business number, common questions, prices or schedule, and who should take chats the AI hands over.",
+    faq: [
+      [
+        "Are WhatsApp charges included?",
+        "Meta charges for some WhatsApp conversations. We show you these costs before you start.",
       ],
       [
-        "Are platform or messaging costs separate?",
-        "Automation tools, CRM licences and messaging-related charges may be separate. These are identified in the proposal.",
+        "Can it send messages first?",
+        "Yes, using message templates approved by Meta, such as booking confirmations and reminders.",
+      ],
+    ],
+    agent: {
+      does: "Replies to customers on WhatsApp, answers questions, books and qualifies leads.",
+      fits: [
+        ["Clinics", "Book appointments and send confirmations and reminders."],
+        ["Real estate", "Qualify leads and book site visits."],
+        ["Education", "Answer admission enquiries and share course details."],
+        ["Finance", "Payment reminders and answers to common questions."],
+        ["Retail", "Order status, product questions and shop timings."],
+      ],
+      correctness: agentCorrectness,
+      languages: agentLanguages,
+      data: agentData,
+      pricing: agentPricing,
+    },
+  },
+  {
+    slug: "ai-automation",
+    title: "AI & workflow automation",
+    group: "ai",
+    metaTitle: "AI and workflow automation",
+    metaDescription:
+      "Automations that cut the admin: connect your forms, inboxes, spreadsheets and business tools, with AI where it helps. Built in Kolkata.",
+    summary:
+      "Automations that cut the admin, with AI where it helps and clear rules where it doesn’t.",
+    audience:
+      "Teams moving information by hand between forms, inboxes, spreadsheets and business tools.",
+    problem:
+      "Manual copying creates delays and missed follow-ups, especially when no one owns the next step.",
+    deliverables: [
+      "Workflow mapping and trigger definitions",
+      "Connections between agreed tools",
+      "AI steps for sorting, summarising and drafting, where useful",
+      "Notifications, follow-up tasks and routing",
+      "Error handling, testing and handover",
+    ],
+    example:
+      "A website enquiry can create a CRM record, get a short AI summary, notify the assigned person and add a follow-up task. Failed steps are flagged for manual review.",
+    inputs:
+      "Tool access, sample records, assignment rules, exception scenarios and the person responsible for each workflow.",
+    faq: [
+      [
+        "Can every tool be connected?",
+        "It depends on API access, plan limits and the data available. We check feasibility before agreeing the integration.",
+      ],
+      [
+        "What happens if an automation fails?",
+        "We agree error reporting, retry behaviour and a manual fallback as part of the workflow design.",
+      ],
+    ],
+  },
+  {
+    slug: "mobile-apps",
+    title: "Mobile application development",
+    group: "apps",
+    summary: "A focused app for a useful, repeatable customer or team task.",
+    audience:
+      "Businesses whose customers or staff need a dedicated mobile experience beyond a website.",
+    problem:
+      "A mobile app should solve a recurring need, such as field updates or account access, rather than duplicate a brochure website.",
+    deliverables: [
+      "User journeys and an agreed first-release scope",
+      "Mobile interface design",
+      "Application and API integration",
+      "Device and accessibility testing",
+      "Release preparation and handover",
+    ],
+    example:
+      "A field service app could let a team view assigned jobs, update progress and attach job records, with permissions appropriate to each role.",
+    inputs:
+      "Your user roles, essential workflows, existing API documentation, supported devices and app store accounts.",
+    faq: [
+      [
+        "Do we need both iOS and Android?",
+        "We choose supported platforms around your users, budget and operational needs during discovery.",
+      ],
+      [
+        "Who handles store approval?",
+        "Submission responsibilities are agreed in the scope. Store review decisions and account fees remain with the platform.",
       ],
     ],
   },
   {
     slug: "websites",
     title: "Website design & development",
-    group: "build",
+    group: "apps",
     summary: "Clear, responsive websites that turn interest into a next step.",
     audience:
       "Businesses launching a first website or replacing a site that no longer reflects their services.",
@@ -104,7 +271,7 @@ export const services: Service[] = [
   {
     slug: "ecommerce",
     title: "Ecommerce websites",
-    group: "build",
+    group: "apps",
     summary: "Make it easier to explore products and place an order.",
     audience:
       "Retailers and product businesses moving online or improving an existing store.",
@@ -133,41 +300,14 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "mobile-apps",
-    title: "Mobile application development",
-    group: "build",
-    summary: "A focused app for a useful, repeatable customer or team task.",
-    audience:
-      "Businesses whose customers or staff need a dedicated mobile experience beyond a website.",
-    problem:
-      "A mobile app should solve a recurring need, such as field updates or account access, rather than duplicate a brochure website.",
-    deliverables: [
-      "User journeys and an agreed first-release scope",
-      "Mobile interface design",
-      "Application and API integration",
-      "Device and accessibility testing",
-      "Release preparation and handover",
-    ],
-    example:
-      "A field service app could let a team view assigned jobs, update progress and attach job records, with permissions appropriate to each role.",
-    inputs:
-      "Your user roles, essential workflows, existing API documentation, supported devices and app store accounts.",
-    faq: [
-      [
-        "Do we need both iOS and Android?",
-        "We choose supported platforms around your users, budget and operational needs during discovery.",
-      ],
-      [
-        "Who handles store approval?",
-        "Submission responsibilities are agreed in the scope. Store review decisions and account fees remain with the platform.",
-      ],
-    ],
-  },
-  {
     slug: "custom-software",
-    title: "Custom business software",
-    group: "build",
-    summary: "Tools that fit how your business actually operates.",
+    title: "Custom software & ERP",
+    group: "software",
+    metaTitle: "Custom software and ERP company in Kolkata",
+    metaDescription:
+      "Custom business software and ERP, from stock and billing to orders and reports, built around how your business works. Our work includes a custom jewellery ERP app.",
+    summary:
+      "ERP and business software that fit how your business actually operates.",
     audience:
       "Teams whose work no longer fits disconnected spreadsheets or off-the-shelf tools.",
     problem:
@@ -180,7 +320,7 @@ export const services: Service[] = [
       "Testing, documentation and user training",
     ],
     example:
-      "An operations portal could connect job intake, assignment, progress updates and management reporting in one shared workflow.",
+      "We built a custom ERP app for Biswas Jewellers, a jewellery retailer. An operations portal can likewise connect stock, billing, orders, progress updates and management reports in one shared system.",
     inputs:
       "Examples of current records, workflow rules, access requirements, reporting needs and sample data stripped of unnecessary personal information.",
     faq: [
@@ -320,40 +460,45 @@ export const services: Service[] = [
     ],
   },
   {
-    slug: "workflow-automation",
-    title: "Workflow automation & integrations",
-    group: "automate",
-    summary: "Connect the repetitive steps that slow your team down.",
+    slug: "social-media-automation",
+    title: "Instagram & social media automation",
+    group: "grow",
+    summary:
+      "Connect social enquiries, approved replies and follow-up tasks to your business workflow.",
     audience:
-      "Teams moving information manually between forms, inboxes, spreadsheets and business tools.",
+      "Businesses handling recurring Instagram or social media enquiries about services, availability and next steps.",
     problem:
-      "Manual copying creates delays and missed follow-ups, especially when no one owns the next step.",
+      "Repeated questions and scattered direct messages make it hard to keep track of enquiries and know when a person needs to respond.",
     deliverables: [
-      "Workflow mapping and trigger definitions",
-      "Connections between agreed tools",
-      "Notifications, follow-up tasks and routing",
-      "Error handling and exception paths",
-      "Testing, documentation and handover",
+      "Review of connected accounts and supported platform features",
+      "Approved replies for common enquiries and keyword-based journeys where supported",
+      "Lead capture and CRM routing with agreed permissions",
+      "Notifications and clear handover to a person",
+      "Workflow testing, reporting and team guidance",
     ],
     example:
-      "A website enquiry can create a CRM record, notify the assigned person and add a follow-up task. Failed steps can be flagged for manual review.",
+      "Where supported by the platform, an Instagram enquiry can receive an approved first reply, offer a relevant service link and create a follow-up task. Questions outside the agreed flow are handed to your team.",
     inputs:
-      "Tool access, sample records, assignment rules, exception scenarios and the person responsible for maintaining each workflow.",
+      "Business account access through approved connections, frequently asked questions, approved response copy, lead routing rules and a person responsible for escalations.",
     faq: [
       [
-        "Can every tool be connected?",
-        "It depends on API access, plan limitations and the data available. We check feasibility before agreeing the integration.",
+        "Can you automate every Instagram message?",
+        "No. Available features depend on your account, platform permissions, messaging rules and the tools selected. We check the supported journey before agreeing the scope.",
       ],
       [
-        "What happens if an automation fails?",
-        "We agree error reporting, retry behaviour and a manual fallback as part of the workflow design.",
+        "Does this include content creation?",
+        "Content planning and creation are available through our social media service. Automation focuses on the agreed enquiry and operational workflows.",
+      ],
+      [
+        "Are platform or messaging costs separate?",
+        "Automation tools, CRM licences and messaging-related charges may be separate. These are identified in the proposal.",
       ],
     ],
   },
   {
     slug: "crm",
     title: "CRM setup & lead management",
-    group: "automate",
+    group: "software",
     summary: "A clear home for enquiries, responsibilities and next steps.",
     audience:
       "Businesses that need to track enquiries and follow-ups across one person or a growing team.",
@@ -384,7 +529,7 @@ export const services: Service[] = [
   {
     slug: "dashboards",
     title: "Dashboards & business reporting",
-    group: "automate",
+    group: "software",
     summary: "Make your operational information easier to use.",
     audience:
       "Business owners and teams assembling reports from spreadsheets, databases or multiple business tools.",

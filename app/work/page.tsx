@@ -1,11 +1,16 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-import { PageIntro, WorkCards, EnquiryBanner } from "@/components/Sections";
+import {
+  PageIntro,
+  WorkCards,
+  EnquiryBanner,
+  workFootnote,
+} from "@/components/Sections";
 import { pageMetadata } from "@/lib/seo";
 export const metadata = pageMetadata({
   title: "Client Work",
   description:
-    "Explore Reba Digital Solutions’ existing client work, including websites, backend systems, mobile app work and admin panels.",
+    "Client work from Reba Digital Solutions: a custom jewellery ERP app, a listings platform with admin panel, mobile app and backend work, and websites.",
   path: "/work",
 });
 export default function WorkPage() {
@@ -14,7 +19,7 @@ export default function WorkPage() {
       <PageIntro
         eyebrow="CLIENT WORK"
         title="Work you can see for yourself."
-        description="A selection from our existing client work. Real projects, with their context and our contribution clearly explained."
+        description="Real clients, real projects: ERP, apps, platforms and websites, with what we built for each."
       />
       <div className="container inner-section">
         <WorkCards details />
@@ -39,16 +44,30 @@ export default function WorkPage() {
         </div>
         <div className="portfolio-extra">
           <div>
-            <h2>Looking for industry website demos?</h2>
+            <p className="eyebrow">OUR PRODUCTS</p>
+            <h2>HelloChamber, our AI receptionist for doctors</h2>
             <p>
-              Our demo directory is a separate home for future concept websites.
-              Concepts will always be labelled as fictional businesses.
+              Our own product, not client work. It answers a chamber’s calls,
+              books serials and sends WhatsApp confirmations.
+            </p>
+          </div>
+          <Link className="text-link" href="/hellochamber">
+            See HelloChamber <ArrowUpRight size={18} />
+          </Link>
+        </div>
+        <div className="portfolio-extra">
+          <div>
+            <h2>Want to hear an AI agent, or see a concept website?</h2>
+            <p>
+              Our demos page has a live AI receptionist you can call, and
+              concept websites labelled as fictional businesses.
             </p>
           </div>
           <Link className="text-link" href="/demos">
-            Website Demos <ArrowUpRight size={18} />
+            Live demos <ArrowUpRight size={18} />
           </Link>
         </div>
+        <p className="small spaced-link">{workFootnote}</p>
       </div>
       <EnquiryBanner />
     </>

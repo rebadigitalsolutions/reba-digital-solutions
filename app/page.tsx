@@ -5,6 +5,7 @@ import {
   ArrowRight,
   Check,
   Code2,
+  PhoneCall,
   TrendingUp,
   Workflow,
 } from "lucide-react";
@@ -16,7 +17,9 @@ import {
   EnquiryBanner,
   IndustryLinks,
   faqs,
+  workFootnote,
 } from "@/components/Sections";
+import { industries } from "@/lib/industries";
 import { pageMetadata } from "@/lib/seo";
 import { defaultTitle, defaultDescription } from "@/lib/site";
 export const metadata = {
@@ -47,32 +50,30 @@ export default function Home() {
       <section className="hero container">
         <div className="hero-copy">
           <p className="eyebrow">
-            <span className="status-dot" /> YOUR NEXT CHAPTER, BUILT BETTER
+            <span className="status-dot" /> SOFTWARE AND AI, BUILT IN KOLKATA
           </p>
           <h1>
-            Better websites.
+            Custom software
             <br />
-            Smarter systems.
+            and AI agents
             <br />
-            <span>
-              More room
-              <br className="desktop-break" /> to grow.
-            </span>
+            <span>that do real work.</span>
           </h1>
           <p className="hero-description">
-            Websites, marketing, and business automation that help your business
-            get noticed, attract enquiries, and work better.
+            Mobile apps, business software, websites and AI agents: voice agents
+            that answer your calls, WhatsApp agents that reply and book, and
+            automations that cut the admin.
           </p>
           <div className="actions">
             <Link className="button" href="/contact">
-              Discuss Your Project <ArrowUpRight size={18} />
+              Discuss your project <ArrowUpRight size={18} />
             </Link>
-            <Link className="text-link" href="/services">
-              Explore Our Services <ArrowRight size={17} />
+            <Link className="text-link" href="/hellochamber#try">
+              <PhoneCall size={17} /> Hear our AI receptionist
             </Link>
           </div>
           <p className="hero-location">
-            Based in Kolkata. Working with businesses in India & beyond.
+            Based in Kolkata. Working with businesses across India.
           </p>
         </div>
         <div className="hero-visual">
@@ -147,7 +148,7 @@ export default function Home() {
           <div>
             <p className="eyebrow">WHAT WE CAN HELP WITH</p>
             <h2>
-              Three ways to move
+              Four ways to move
               <br />
               your business forward.
             </h2>
@@ -159,6 +160,28 @@ export default function Home() {
           </p>
         </div>
         <ServiceGroups />
+      </section>
+      <section id="products" className="section container products-section">
+        <p className="eyebrow">OUR PRODUCTS</p>
+        <Link href="/hellochamber" className="product-card">
+          <span className="service-icon">
+            <PhoneCall size={24} />
+          </span>
+          <span className="product-card-copy">
+            <span className="small-label">
+              HEALTHCARE · AI RECEPTIONIST FOR DOCTORS
+            </span>
+            <strong>HelloChamber</strong>
+            <span>
+              Answers your chamber’s phone in Bengali, Hindi or English, books
+              serials or time slots, and sends the patient a WhatsApp
+              confirmation, day and night.
+            </span>
+          </span>
+          <span className="text-link">
+            See HelloChamber <ArrowUpRight size={18} />
+          </span>
+        </Link>
       </section>
       <section id="portfolio" className="section work-section">
         <div className="container">
@@ -176,6 +199,7 @@ export default function Home() {
             </Link>
           </div>
           <WorkCards limit={4} />
+          <p className="small spaced-link">{workFootnote}</p>
         </div>
       </section>
       <section id="industries" className="section container">
@@ -189,13 +213,13 @@ export default function Home() {
             </h2>
           </div>
           <p>
-            A property enquiry is different from a clinic appointment. Your
-            website and systems should reflect that.
+            A patient booking is different from a site visit or a payment
+            reminder. Your software and agents should reflect that.
           </p>
         </div>
-        <IndustryLinks limit={6} />
+        <IndustryLinks focus />
         <Link className="text-link spaced-link" href="/industries">
-          Explore All 15 Industries <ArrowRight size={18} />
+          Explore all {industries.length} industries <ArrowRight size={18} />
         </Link>
       </section>
       <section className="section process-section">
@@ -218,8 +242,8 @@ export default function Home() {
             Straightforward people.
           </h2>
           <p>
-            We connect your website, marketing, and day-to-day systems around
-            how your business actually works.
+            We build the software, apps and AI agents your business runs on,
+            around how it actually works.
           </p>
           <Link href="/about" className="text-link">
             About Reba <ArrowUpRight size={18} />
@@ -251,7 +275,8 @@ export default function Home() {
             <div>
               <h3>A handover you can use</h3>
               <p>
-                Understandable guidance for managing your website and systems.
+                Understandable guidance for running your software, agents and
+                website.
               </p>
             </div>
           </div>

@@ -5,21 +5,35 @@ import {
   ArrowUpRight,
   Code2,
   TrendingUp,
-  Workflow,
   Plus,
+  Bot,
   Building2,
   Stethoscope,
   Utensils,
   Scale,
   BedDouble,
-  Store,
   Smartphone,
+  Gem,
+  GraduationCap,
+  Landmark,
   type LucideIcon,
 } from "lucide-react";
 import { groups, services } from "@/lib/services";
-import { industries } from "@/lib/industries";
+import { industries, focusIndustries } from "@/lib/industries";
+const industryIcons: Record<string, LucideIcon> = {
+  clinics: Stethoscope,
+  dentists: Stethoscope,
+  "real-estate-agents": Building2,
+  "real-estate-developers": Building2,
+  retail: Gem,
+  education: GraduationCap,
+  finance: Landmark,
+  restaurants: Utensils,
+  hotels: BedDouble,
+  "law-firms": Scale,
+};
 export function ServiceGroups() {
-  const icons = [Code2, TrendingUp, Workflow];
+  const icons = [Bot, Code2, Smartphone, TrendingUp];
   return (
     <div className="service-grid">
       {groups.map((g, n) => {
@@ -49,7 +63,7 @@ export function ServiceGroups() {
                 ))}
             </div>
             <Link className="text-link" href={`/services#${g.slug}`}>
-              Explore {g.title} Services <ArrowUpRight size={18} />
+              {g.more} <ArrowUpRight size={18} />
             </Link>
           </article>
         );
@@ -60,11 +74,11 @@ export function ServiceGroups() {
 type Project = {
   name: string;
   category: string;
-  url: string;
+  /** Leave out until the client agrees to be linked. */
+  url?: string;
   description: string;
   scope: string;
   context: string;
-  outcome: string;
 } & (
   | {
       visual: "screenshot";
@@ -78,7 +92,49 @@ type Project = {
     }
 );
 
+export const workFootnote =
+  "We describe what we built; we don’t publish client numbers without permission.";
+
 export const projects: Project[] = [
+  {
+    name: "Biswas Jewellers",
+    category: "RETAIL",
+    visual: "project",
+    icon: Gem,
+    description: "A custom jewellery ERP app.",
+    // FILL: modules (stock, billing, orders, karigar work?), platforms,
+    // who uses it daily and since when. Add a url only if the client agrees.
+    scope:
+      "Design and development of a custom ERP app, built around how a jewellery business runs day to day.",
+    context:
+      "A jewellery retailer that needed one system for its daily operations instead of registers and spreadsheets.",
+  },
+  {
+    name: "Canvasbrick",
+    category: "INTERIOR DESIGN",
+    image: "/work/canvasbrick.webp",
+    visual: "screenshot",
+    url: "https://canvasbrick.com/",
+    description:
+      "A website for an interior design company, with backend and mobile app development.",
+    scope:
+      "Website development, backend development and a mobile app for the business workflow.",
+    context:
+      "Helping an interior design company present its work online and support operations beyond the public website.",
+  },
+  {
+    name: "Spacevyu",
+    category: "REAL ESTATE",
+    image: "/work/spacevyu.webp",
+    visual: "screenshot",
+    url: "https://spacevyu.com/",
+    description:
+      "A real estate listings platform with an admin panel for managing properties.",
+    scope:
+      "Listings platform development, with an admin panel for managing listings, inventory and site content.",
+    context:
+      "A real estate platform where visitors browse listings and the team manages inventory through an admin interface.",
+  },
   {
     name: "Sansthita",
     category: "NONPROFIT",
@@ -90,8 +146,6 @@ export const projects: Project[] = [
       "Website design and development, with a focus on clarity, accessibility and navigation.",
     context:
       "Presenting the organisation and its work in an accessible website.",
-    outcome:
-      "A published website that visitors can explore. No performance results are claimed.",
   },
   {
     name: "Cherry n Bean",
@@ -100,42 +154,9 @@ export const projects: Project[] = [
     visual: "screenshot",
     url: "https://www.cherrynbean.com/",
     description: "A website for a homestay among coffee plantations.",
-    scope:
-      "Website design and development, as listed in our existing portfolio.",
+    scope: "Website design and development.",
     context:
       "Introducing a homestay that combines traditional and modern architecture.",
-    outcome:
-      "A published homestay website. Booking and conversion results are not documented.",
-  },
-  {
-    name: "Canvasbrick",
-    category: "INTERIOR DESIGN",
-    image: "/work/canvasbrick.webp",
-    visual: "screenshot",
-    url: "https://canvasbrick.com/",
-    description:
-      "A website for an interior design company, supported by backend and mobile app development.",
-    scope:
-      "Website development, backend development and mobile app development for the business workflow.",
-    context:
-      "Helping an interior design company present its work online and support operations beyond the public website.",
-    outcome:
-      "A client website and supporting application work. No performance results are claimed.",
-  },
-  {
-    name: "Spacevyu",
-    category: "REAL ESTATE",
-    image: "/work/spacevyu.webp",
-    visual: "screenshot",
-    url: "https://spacevyu.com/",
-    description:
-      "A real estate listing website with an admin panel for managing property content.",
-    scope:
-      "Website development for property listings, with admin panel functionality for managing listings and site content.",
-    context:
-      "Supporting a real estate platform where visitors can browse listings and the team can manage inventory through an admin interface.",
-    outcome:
-      "A client real estate listing platform. No traffic, lead or sales figures are claimed.",
   },
 ];
 export function WorkCards({
@@ -151,39 +172,7 @@ export function WorkCards({
         const ProjectIcon = p.icon ?? Smartphone;
         return (
           <article className="work-card" key={p.name}>
-            <a
-              className={`work-image${
-                p.visual === "project" ? " work-project-panel" : ""
-              }`}
-              href={p.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label={`Visit ${p.name} website (opens in new tab)`}
-            >
-              {p.visual === "screenshot" ? (
-                <Image
-                  src={p.image}
-                  alt={`Screenshot of the ${p.name} website`}
-                  width={1200}
-                  height={900}
-                  sizes="(max-width: 700px) 90vw, 44vw"
-                />
-              ) : (
-                <span className="project-panel-inner">
-                  <span className="project-panel-icon">
-                    <ProjectIcon size={30} />
-                  </span>
-                  <span className="project-panel-copy">
-                    <span className="small-label">{p.category}</span>
-                    <strong>{p.name}</strong>
-                    <span>{p.description}</span>
-                  </span>
-                </span>
-              )}
-              <span className="image-arrow">
-                <ArrowUpRight />
-              </span>
-            </a>
+            <WorkVisual project={p} icon={ProjectIcon} />
             <div className="work-meta">
               <span className="small-label">{p.category} · CLIENT WORK</span>
               <h3>{p.name}</h3>
@@ -192,20 +181,20 @@ export function WorkCards({
                 <dl className="project-detail">
                   <dt>Context</dt>
                   <dd>{p.context}</dd>
-                  <dt>Our contribution</dt>
+                  <dt>What we built</dt>
                   <dd>{p.scope}</dd>
-                  <dt>Published outcome</dt>
-                  <dd>{p.outcome}</dd>
                 </dl>
               )}
-              <a
-                href={p.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-link"
-              >
-                Visit Website <ArrowUpRight size={17} />
-              </a>
+              {p.url && (
+                <a
+                  href={p.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-link"
+                >
+                  Visit website <ArrowUpRight size={17} />
+                </a>
+              )}
             </div>
           </article>
         );
@@ -213,23 +202,69 @@ export function WorkCards({
     </div>
   );
 }
-export function IndustryLinks({ limit = 15 }: { limit?: number }) {
-  const chosen =
-    limit === 6
-      ? [
-          industries[0],
-          industries[3],
-          industries[5],
-          industries[2],
-          industries[6],
-          industries[13],
-        ]
+function WorkVisual({
+  project: p,
+  icon: ProjectIcon,
+}: {
+  project: Project;
+  icon: LucideIcon;
+}) {
+  const inner =
+    p.visual === "screenshot" ? (
+      <Image
+        src={p.image}
+        alt={`Screenshot of the ${p.name} website`}
+        width={1200}
+        height={900}
+        sizes="(max-width: 700px) 90vw, 44vw"
+      />
+    ) : (
+      <span className="project-panel-inner">
+        <span className="project-panel-icon">
+          <ProjectIcon size={30} />
+        </span>
+        <span className="project-panel-copy">
+          <span className="small-label">{p.category}</span>
+          <strong>{p.name}</strong>
+          <span>{p.description}</span>
+        </span>
+      </span>
+    );
+  const className = `work-image${
+    p.visual === "project" ? " work-project-panel" : ""
+  }`;
+  if (!p.url) return <div className={className}>{inner}</div>;
+  return (
+    <a
+      className={className}
+      href={p.url}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={`Visit ${p.name} website (opens in new tab)`}
+    >
+      {inner}
+      <span className="image-arrow">
+        <ArrowUpRight />
+      </span>
+    </a>
+  );
+}
+export function IndustryLinks({
+  focus = false,
+  rest = false,
+}: {
+  focus?: boolean;
+  rest?: boolean;
+}) {
+  const chosen = focus
+    ? focusIndustries
+    : rest
+      ? industries.filter((i) => !focusIndustries.includes(i))
       : industries;
-  const icons = [Building2, Stethoscope, Utensils, Scale, BedDouble, Store];
   return (
     <div className="industry-grid">
-      {chosen.slice(0, limit).map((i, n) => {
-        const Icon = icons[n % icons.length];
+      {chosen.map((i) => {
+        const Icon = industryIcons[i.slug] ?? Building2;
         return (
           <Link
             key={i.slug}
@@ -282,6 +317,23 @@ export function Process() {
 }
 export const faqs: [string, string][] = [
   [
+    "Can your AI agents speak Bengali and Hindi?",
+    "Yes, and English. They follow the caller when they switch languages.",
+  ],
+  [
+    "What if the AI gets something wrong or doesn’t know?",
+    "Facts like prices, availability and bookings come from your system, so it doesn’t make them up. When it can’t help, it hands over to your staff or takes a callback request.",
+  ],
+  [
+    "Is our customers’ data safe?",
+    "Our AI agents are built to India’s DPDP Act 2023. Your data stays yours.",
+  ],
+  [
+    // FILL: confirm pricing wording with Pritam.
+    "What does an AI agent cost per month?",
+    "A monthly plan based on call minutes. We quote after a short call about your business.",
+  ],
+  [
     "How long will my project take?",
     "Timing depends on the scope, content readiness, integrations and review rounds. After discovery, we propose milestones and identify what we need from you to keep things moving.",
   ],
@@ -333,7 +385,8 @@ export function EnquiryBanner() {
             your business?
           </h2>
           <p>
-            A new website. A clearer digital presence. A better way to work.
+            A new app. An AI agent that answers your calls. A better way to
+            work.
             <br />
             Tell us where you’d like to start.
           </p>
